@@ -1,1171 +1,1164 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DREAMY PORTFOLIO 🐬✨</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --water-blue: #7bc9e2;
-            --water-blue-dark: #5bb3d0;
-            --bg-white: #ffffff;
-            --bg-stripe-1: #f2f9fd;
-            --bg-stripe-2: #e2f2fb;
-            --text-main: #2d3748;
-            --text-muted: #718096;
-            --border-light: #e2e8f0;
-            --accent-pink: #ff9ff3;
-            --accent-yellow: #feca57;
-            --accent-orange: #f49834;
-            --accent-green: #55efc4;
-            --card-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--water-blue);
-            color: var(--text-main);
-            font-family: 'Zen Maru Gothic', sans-serif;
-            font-weight: 700;
-            min-height: 100vh;
-            overflow-x: hidden;
-            opacity: 0;
-            animation: fadeIn 0.4s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .site-header {
-            background-color: var(--water-blue);
-            width: 100%;
-            position: relative;
-            z-index: 100;
-            padding-bottom: 2rem;
-        }
-
-        .header-top {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2.4rem;
-            font-weight: 900;
-            color: #ffffff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            letter-spacing: 0.05em;
-            margin: 0 auto;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            cursor: pointer;
-            text-shadow: 0 3px 0 rgba(0,0,0,0.06);
-        }
-
-        .header-top-right {
-            display: flex;
-            gap: 1.8rem;
-            margin-left: auto;
-        }
-
-        .top-icon-btn {
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            font-size: 0.85rem;
-            font-weight: 900;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .top-icon-btn i {
-            font-size: 1.2rem;
-            background-color: #ffffff;
-            color: var(--water-blue);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-        }
-
-        .top-icon-btn:hover {
-            opacity: 0.85;
-        }
-
-        .sub-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1rem 1.5rem 3rem;
-            max-width: 1350px;
-            margin: 0 auto;
-            overflow-x: auto;
-        }
-
-        .sub-nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 1.6rem;
-            border-radius: 9999px;
-            background-color: transparent;
-            transition: all 0.2s;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .sub-nav a:hover, .sub-nav a.active {
-            background-color: #ffffff;
-            color: var(--water-blue);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-        }
-
-        .seamless-container {
-            background-color: var(--water-blue);
-            position: relative;
-            padding-bottom: 8rem;
-        }
-
-        .white-content-section {
-            background-color: var(--bg-stripe-1);
-            background-image: repeating-linear-gradient(
-                -45deg,
-                var(--bg-stripe-1),
-                var(--bg-stripe-1) 20px,
-                var(--bg-stripe-2) 20px,
-                var(--bg-stripe-2) 40px
-            );
-            border-top-left-radius: 55px;
-            border-top-right-radius: 55px;
-            margin-top: -20px;
-            padding-top: 5rem;
-            padding-bottom: 8rem;
-            position: relative;
-            z-index: 10;
-            min-height: 80vh;
-        }
-
-        .carousel-outer {
-            max-width: 1450px;
-            margin: 0 auto 6rem;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .carousel-window {
-            overflow: hidden;
-            padding: 2.5rem 0;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 2.5rem;
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            align-items: center;
-        }
-
-        .carousel-card {
-            min-width: calc(33.333% - 1.7rem);
-            height: 420px;
-            background-color: #fffde6;
-            border-radius: 36px;
-            overflow: hidden;
-            border: 4px solid #ffffff;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .carousel-card.card-pink { background-color: #ffeef8; }
-        .carousel-card.card-yellow { background-color: #fffde6; }
-        .carousel-card.card-orange { background-color: #fff3e6; }
-        .carousel-card.card-blue { background-color: #eef8ff; }
-
-        .carousel-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .carousel-card-inner {
-            padding: 3.5rem;
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .carousel-card-inner h3 {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--text-main);
-            margin-bottom: 1.2rem;
-        }
-
-        .carousel-card-inner p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #ffffff;
-            border: 3px solid var(--water-blue);
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            color: var(--water-blue);
-            cursor: pointer;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-            transition: all 0.2s;
-        }
-
-        .carousel-arrow:hover {
-            background-color: var(--water-blue);
-            color: #ffffff;
-        }
-
-        .carousel-prev { left: 10px; }
-        .carousel-next { right: 10px; }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.9rem;
-            margin-top: 2.5rem;
-        }
-
-        .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: #cbd5e1;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .dot.active {
-            background-color: var(--water-blue);
-            transform: scale(1.3);
-        }
-
-        .page-view {
-            display: none;
-            animation: fadeInView 0.3s ease forwards;
-        }
-
-        .page-view.active-view {
-            display: block;
-        }
-
-        @keyframes fadeInView {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .news-section {
-            max-width: 1200px;
-            margin: 4rem auto 6rem;
-            padding: 0 2rem;
-        }
-
-        .news-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 28px;
-            padding: 1.6rem 3rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            border: 2px solid var(--border-light);
-            cursor: pointer;
-            transition: border-color 0.2s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            margin-bottom: 1.5rem;
-            text-decoration: none;
-        }
-
-        .news-card:hover {
-            border-color: var(--water-blue);
-            transform: translateY(-2px);
-        }
-
-        .news-badge {
-            background-color: #ffeef8;
-            color: #d63384;
-            padding: 0.4rem 1.4rem;
-            border-radius: 16px;
-            font-size: 0.9rem;
-            font-weight: 900;
-            border: 2px solid #ffd1ec;
-            white-space: nowrap;
-        }
-
-        .news-date {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .news-msg {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text-main);
-            flex-grow: 1;
-        }
-
-        .section-header {
-            text-align: center;
-            margin: 5rem auto 3rem;
-            padding: 0 1.5rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.6rem;
-            font-weight: 900;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-        }
-
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.4rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-            padding: 0 1.5rem;
-        }
-
-        .filter-btn {
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 3px solid var(--border-light);
-            font-family: inherit;
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: var(--text-main);
-            cursor: pointer;
-            padding: 0.8rem 2.4rem;
-            border-radius: 9999px;
-            box-shadow: 0 4px 0 var(--border-light);
-            transition: all 0.2s ease;
-        }
-
-        .filter-btn:hover {
-            background-color: #f0f9ff;
-            transform: translateY(-2px);
-        }
-
-        .filter-btn.active {
-            background-color: var(--water-blue);
-            color: #ffffff;
-            border-color: var(--water-blue-dark);
-            box-shadow: 0 4px 0 var(--water-blue-dark);
-        }
-
-        .grid-container {
-            max-width: 1300px;
-            margin: 0 auto 8rem;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 3.5rem;
-        }
-
-        .grid-item {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .grid-item:hover {
-            transform: translateY(-6px);
-        }
-
-        .card-work {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 40px;
-            border: 4px solid #ffffff;
-            box-shadow: var(--card-shadow);
-            transition: border-color 0.3s;
-            position: relative;
-        }
-
-        .grid-item:hover .card-work {
-            border-color: var(--water-blue);
-        }
-
-        .card-img-wrapper {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            background-color: #f8fafc;
-            border-radius: 28px;
-            overflow: hidden;
-            margin-bottom: 1.8rem;
-            position: relative;
-            border: 2px solid var(--border-light);
-        }
-
-        .card-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .grid-item:hover .card-img-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .card-badge-label {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background-color: #ffffff;
-            color: var(--text-main);
-            padding: 0.4rem 1.2rem;
-            border-radius: 9999px;
-            font-size: 0.85rem;
-            font-weight: 900;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-            border: 2px solid var(--border-light);
-            z-index: 2;
-        }
-
-        .favorite-btn {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background-color: #ffffff;
-            color: #cbd5e1;
-            border: 2px solid var(--border-light);
-            padding: 0.4rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.9rem;
-            font-weight: 900;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-            transition: all 0.2s ease;
-            z-index: 5;
-        }
-
-        .favorite-btn:hover {
-            transform: scale(1.08);
-        }
-
-        .favorite-btn.liked {
-            background-color: #ffeef8;
-            color: #d63384;
-            border-color: #ff9ff3;
-        }
-
-        .card-date {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 0.6rem;
-        }
-
-        .card-title {
-            font-size: 1.35rem;
-            font-weight: 900;
-            color: var(--text-main);
-        }
-
-        /* 検索バー用スタイル */
-        .search-box-wrapper {
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .search-input {
-            flex-grow: 1;
-            padding: 1rem 1.5rem;
-            font-size: 1.1rem;
-            font-family: inherit;
-            font-weight: 700;
-            border: 3px solid var(--border-light);
-            border-radius: 9999px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .search-input:focus {
-            border-color: var(--water-blue);
-        }
-
-        .search-results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
-            max-height: 50vh;
-            overflow-y: auto;
-            padding: 0.5rem;
-        }
-
-        .search-result-card {
-            background: #f8fafc;
-            border: 2px solid var(--border-light);
-            border-radius: 20px;
-            padding: 1rem;
-            cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .search-result-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--water-blue);
-        }
-
-        .search-result-card img {
-            width: 100%;
-            aspect-ratio: 16/10;
-            object-fit: cover;
-            border-radius: 14px;
-            margin-bottom: 0.8rem;
-        }
-
-        .search-result-card h4 {
-            font-size: 1rem;
-            font-weight: 900;
-            color: var(--text-main);
-            margin-bottom: 0.3rem;
-        }
-
-        .search-result-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* お問い合わせセクション */
-        .contact-container {
-            max-width: 850px;
-            margin: 0 auto 8rem;
-            padding: 0 2rem;
-        }
-
-        .contact-box {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 4rem 3.5rem;
-            border-radius: 40px;
-            border: 4px solid #ffffff;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-        }
-
-        .contact-intro {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 3rem;
-        }
-
-        .sns-buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .sns-link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.2rem 2rem;
-            border-radius: 9999px;
-            font-size: 1.1rem;
-            font-weight: 900;
-            text-decoration: none;
-            color: #ffffff;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .sns-link-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-        }
-
-        .btn-email { background-color: #ea4335; }
-        .btn-twitter { background-color: #000000; }
-        .sns-link-btn i { font-size: 1.4rem; }
-
-        /* モーダル共通 */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(45, 55, 72, 0.45);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
-            width: 90%;
-            max-width: 850px;
-            max-height: 85vh;
-            overflow-y: auto;
-            background-color: #ffffff;
-            padding: 3.5rem;
-            border-radius: 45px;
-            border: 5px solid var(--border-light);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .modal.open .modal-content {
-            transform: scale(1);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1.8rem;
-            right: 1.8rem;
-            background-color: #ff9ff3;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            font-size: 1.4rem;
-            font-weight: 900;
-            cursor: pointer;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 0 #e07bb9;
-            z-index: 10;
-        }
-
-        .modal-body img {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            object-fit: cover;
-            border-radius: 28px;
-            margin-bottom: 2rem;
-            border: 3px solid var(--border-light);
-        }
-
-        .modal-body h2 {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 1.2rem;
-            color: var(--text-main);
-        }
-
-        .modal-body p {
-            color: var(--text-muted);
-            font-weight: 700;
-            font-size: 1.15rem;
-            line-height: 1.9;
-        }
-
-        footer {
-            background-color: var(--water-blue);
-            padding: 2.5rem 2rem 3rem;
-            text-align: center;
-            color: #ffffff;
-            font-weight: 900;
-            position: relative;
-            z-index: 5;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #ffffff;
-            margin-bottom: 1.2rem;
-            display: inline-block;
-            cursor: pointer;
-            text-shadow: 0 3px 0 rgba(0,0,0,0.06);
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 900;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .footer-nav a:hover {
-            opacity: 0.8;
-        }
-
-        .footer-copy {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        @media (max-width: 900px) {
-            .carousel-card { min-width: 100%; }
-        }
-
-        @media (max-width: 768px) {
-            .logo { position: static; transform: none; font-size: 1.8rem; }
-            .header-top { flex-direction: column; gap: 1.5rem; align-items: center; }
-            .header-top-right { margin-left: 0; }
-            .sub-nav { justify-content: flex-start; }
-            .sns-buttons-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DREAMY PORTFOLIO 🐬✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+--water-blue: #7bc9e2;
+--water-blue-dark: #5bb3d0;
+--bg-white: #ffffff;
+--bg-stripe-1: #f2f9fd;
+--bg-stripe-2: #e2f2fb;
+--text-main: #2d3748;
+--text-muted: #718096;
+--border-light: #e2e8f0;
+--accent-pink: #ff9ff3;
+--accent-yellow: #feca57;
+--accent-orange: #f49834;
+--accent-green: #55efc4;
+--card-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+background-color: var(--water-blue);
+color: var(--text-main);
+font-family: 'Zen Maru Gothic', sans-serif;
+font-weight: 700;
+min-height: 100vh;
+overflow-x: hidden;
+opacity: 0;
+animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+to { opacity: 1; }
+}
+.site-header {
+background-color: var(--water-blue);
+width: 100%;
+position: relative;
+z-index: 100;
+padding-bottom: 2rem;
+}
+.header-top {
+max-width: 1400px;
+margin: 0 auto;
+padding: 1.5rem 2.5rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+font-size: 2.4rem;
+font-weight: 900;
+color: #ffffff;
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 0.8rem;
+letter-spacing: 0.05em;
+margin: 0 auto;
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+cursor: pointer;
+text-shadow: 0 3px 0 rgba(0,0,0,0.06);
+}
+.header-top-right {
+display: flex;
+gap: 1.8rem;
+margin-left: auto;
+}
+.top-icon-btn {
+background: transparent;
+border: none;
+color: #ffffff;
+font-size: 0.85rem;
+font-weight: 900;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0.4rem;
+cursor: pointer;
+text-decoration: none;
+transition: opacity 0.2s;
+}
+.top-icon-btn i {
+font-size: 1.2rem;
+background-color: #ffffff;
+color: var(--water-blue);
+width: 44px;
+height: 44px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.top-icon-btn:hover {
+opacity: 0.85;
+}
+.sub-nav {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 1.5rem;
+padding: 1rem 1.5rem 3rem;
+max-width: 1350px;
+margin: 0 auto;
+overflow-x: auto;
+}
+.sub-nav a {
+color: #ffffff;
+text-decoration: none;
+font-size: 1.05rem;
+font-weight: 900;
+display: flex;
+align-items: center;
+gap: 0.6rem;
+padding: 0.6rem 1.6rem;
+border-radius: 9999px;
+background-color: transparent;
+transition: all 0.2s;
+white-space: nowrap;
+cursor: pointer;
+}
+.sub-nav a:hover, .sub-nav a.active {
+background-color: #ffffff;
+color: var(--water-blue);
+box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+.seamless-container {
+background-color: var(--water-blue);
+position: relative;
+padding-bottom: 8rem;
+}
+.white-content-section {
+background-color: var(--bg-stripe-1);
+background-image: repeating-linear-gradient(
+-45deg,
+var(--bg-stripe-1),
+var(--bg-stripe-1) 20px,
+var(--bg-stripe-2) 20px,
+var(--bg-stripe-2) 40px
+);
+border-top-left-radius: 55px;
+border-top-right-radius: 55px;
+margin-top: -20px;
+padding-top: 5rem;
+padding-bottom: 8rem;
+position: relative;
+z-index: 10;
+min-height: 80vh;
+}
+.carousel-outer {
+max-width: 1450px;
+margin: 0 auto 6rem;
+padding: 0 2rem;
+position: relative;
+}
+.carousel-window {
+overflow: hidden;
+padding: 2.5rem 0;
+}
+.carousel-track {
+display: flex;
+gap: 2.5rem;
+transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+align-items: center;
+}
+.carousel-card {
+min-width: calc(33.333% - 1.7rem);
+height: 420px;
+background-color: #fffde6;
+border-radius: 36px;
+overflow: hidden;
+border: 4px solid #ffffff;
+box-shadow: var(--card-shadow);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+cursor: pointer;
+transition: transform 0.3s ease;
+flex-shrink: 0;
+}
+.carousel-card.card-pink { background-color: #ffeef8; }
+.carousel-card.card-yellow { background-color: #fffde6; }
+.carousel-card.card-orange { background-color: #fff3e6; }
+.carousel-card.card-blue { background-color: #eef8ff; }
+.carousel-card img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.carousel-card-inner {
+padding: 3.5rem;
+text-align: center;
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.carousel-card-inner h3 {
+font-size: 2rem;
+font-weight: 900;
+color: var(--text-main);
+margin-bottom: 1.2rem;
+}
+.carousel-card-inner p {
+font-size: 1.1rem;
+color: var(--text-muted);
+line-height: 1.7;
+}
+.carousel-arrow {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background-color: #ffffff;
+border: 3px solid var(--water-blue);
+width: 58px;
+height: 58px;
+border-radius: 50%;
+font-size: 1.3rem;
+color: var(--water-blue);
+cursor: pointer;
+z-index: 20;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+transition: all 0.2s;
+}
+.carousel-arrow:hover {
+background-color: var(--water-blue);
+color: #ffffff;
+}
+.carousel-prev { left: 10px; }
+.carousel-next { right: 10px; }
+.carousel-dots {
+display: flex;
+justify-content: center;
+gap: 0.9rem;
+margin-top: 2.5rem;
+}
+.dot {
+width: 14px;
+height: 14px;
+border-radius: 50%;
+background-color: #cbd5e1;
+border: none;
+cursor: pointer;
+transition: all 0.3s;
+}
+.dot.active {
+background-color: var(--water-blue);
+transform: scale(1.3);
+}
+.page-view {
+display: none;
+animation: fadeInView 0.3s ease forwards;
+}
+.page-view.active-view {
+display: block;
+}
+@keyframes fadeInView {
+from { opacity: 0; transform: translateY(8px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.news-section {
+max-width: 1200px;
+margin: 4rem auto 6rem;
+padding: 0 2rem;
+}
+.news-card {
+background-color: rgba(255, 255, 255, 0.9);
+border-radius: 28px;
+padding: 1.6rem 3rem;
+display: flex;
+align-items: center;
+gap: 2rem;
+border: 2px solid var(--border-light);
+cursor: pointer;
+transition: border-color 0.2s, transform 0.2s;
+box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+margin-bottom: 1.5rem;
+text-decoration: none;
+}
+.news-card:hover {
+border-color: var(--water-blue);
+transform: translateY(-2px);
+}
+.news-badge {
+background-color: #ffeef8;
+color: #d63384;
+padding: 0.4rem 1.4rem;
+border-radius: 16px;
+font-size: 0.9rem;
+font-weight: 900;
+border: 2px solid #ffd1ec;
+white-space: nowrap;
+}
+.news-date {
+font-size: 0.95rem;
+color: var(--text-muted);
+}
+.news-msg {
+font-size: 1.05rem;
+font-weight: 700;
+color: var(--text-main);
+flex-grow: 1;
+}
+.section-header {
+text-align: center;
+margin: 5rem auto 3rem;
+padding: 0 1.5rem;
+}
+.section-header h2 {
+font-size: 2.6rem;
+font-weight: 900;
+color: var(--text-main);
+margin-bottom: 1rem;
+}
+.section-header p {
+color: var(--text-muted);
+font-size: 1.15rem;
+}
+.filter-container {
+display: flex;
+justify-content: center;
+gap: 1.4rem;
+margin-bottom: 4rem;
+flex-wrap: wrap;
+padding: 0 1.5rem;
+}
+.filter-btn {
+background-color: rgba(255, 255, 255, 0.9);
+border: 3px solid var(--border-light);
+font-family: inherit;
+font-size: 1.05rem;
+font-weight: 900;
+color: var(--text-main);
+cursor: pointer;
+padding: 0.8rem 2.4rem;
+border-radius: 9999px;
+box-shadow: 0 4px 0 var(--border-light);
+transition: all 0.2s ease;
+}
+.filter-btn:hover {
+background-color: #f0f9ff;
+transform: translateY(-2px);
+}
+.filter-btn.active {
+background-color: var(--water-blue);
+color: #ffffff;
+border-color: var(--water-blue-dark);
+box-shadow: 0 4px 0 var(--water-blue-dark);
+}
+.grid-container {
+max-width: 1300px;
+margin: 0 auto 8rem;
+padding: 0 2rem;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+gap: 3.5rem;
+}
+.grid-item {
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+.grid-item:hover {
+transform: translateY(-6px);
+}
+.card-work {
+background-color: rgba(255, 255, 255, 0.95);
+padding: 2rem;
+border-radius: 40px;
+border: 4px solid #ffffff;
+box-shadow: var(--card-shadow);
+transition: border-color 0.3s;
+position: relative;
+}
+.grid-item:hover .card-work {
+border-color: var(--water-blue);
+}
+.card-img-wrapper {
+width: 100%;
+aspect-ratio: 16 / 10;
+background-color: #f8fafc;
+border-radius: 28px;
+overflow: hidden;
+margin-bottom: 1.8rem;
+position: relative;
+border: 2px solid var(--border-light);
+}
+.card-img-wrapper img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s ease;
+}
+.grid-item:hover .card-img-wrapper img {
+transform: scale(1.05);
+}
+.card-badge-label {
+position: absolute;
+top: 16px;
+left: 16px;
+background-color: #ffffff;
+color: var(--text-main);
+padding: 0.4rem 1.2rem;
+border-radius: 9999px;
+font-size: 0.85rem;
+font-weight: 900;
+box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+border: 2px solid var(--border-light);
+z-index: 2;
+}
+.favorite-btn {
+position: absolute;
+top: 16px;
+right: 16px;
+background-color: #ffffff;
+color: #cbd5e1;
+border: 2px solid var(--border-light);
+padding: 0.4rem 1rem;
+border-radius: 9999px;
+font-size: 0.9rem;
+font-weight: 900;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+transition: all 0.2s ease;
+z-index: 5;
+}
+.favorite-btn:hover {
+transform: scale(1.08);
+}
+.favorite-btn.liked {
+background-color: #ffeef8;
+color: #d63384;
+border-color: #ff9ff3;
+}
+.card-date {
+font-size: 0.9rem;
+font-weight: 700;
+color: var(--text-muted);
+margin-bottom: 0.6rem;
+}
+.card-title {
+font-size: 1.35rem;
+font-weight: 900;
+color: var(--text-main);
+}
+/* 検索バー用スタイル */
+.search-box-wrapper {
+margin-bottom: 2rem;
+display: flex;
+gap: 1rem;
+}
+.search-input {
+flex-grow: 1;
+padding: 1rem 1.5rem;
+font-size: 1.1rem;
+font-family: inherit;
+font-weight: 700;
+border: 3px solid var(--border-light);
+border-radius: 9999px;
+outline: none;
+transition: border-color 0.2s;
+}
+.search-input:focus {
+border-color: var(--water-blue);
+}
+.search-results-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+gap: 2rem;
+max-height: 50vh;
+overflow-y: auto;
+padding: 0.5rem;
+}
+.search-result-card {
+background: #f8fafc;
+border: 2px solid var(--border-light);
+border-radius: 20px;
+padding: 1rem;
+cursor: pointer;
+transition: transform 0.2s, border-color 0.2s;
+}
+.search-result-card:hover {
+transform: translateY(-3px);
+border-color: var(--water-blue);
+}
+.search-result-card img {
+width: 100%;
+aspect-ratio: 16/10;
+object-fit: cover;
+border-radius: 14px;
+margin-bottom: 0.8rem;
+}
+.search-result-card h4 {
+font-size: 1rem;
+font-weight: 900;
+color: var(--text-main);
+margin-bottom: 0.3rem;
+}
+.search-result-card p {
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+/* お問い合わせセクション */
+.contact-container {
+max-width: 850px;
+margin: 0 auto 8rem;
+padding: 0 2rem;
+}
+.contact-box {
+background-color: rgba(255, 255, 255, 0.95);
+padding: 4rem 3.5rem;
+border-radius: 40px;
+border: 4px solid #ffffff;
+box-shadow: var(--card-shadow);
+text-align: center;
+}
+.contact-intro {
+font-size: 1.15rem;
+color: var(--text-muted);
+line-height: 1.8;
+margin-bottom: 3rem;
+}
+.sns-buttons-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1.5rem;
+justify-content: center;
+}
+.sns-link-btn {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 1rem;
+padding: 1.2rem 2rem;
+border-radius: 9999px;
+font-size: 1.1rem;
+font-weight: 900;
+text-decoration: none;
+color: #ffffff;
+box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sns-link-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+.btn-email { background-color: #ea4335; }
+.btn-twitter { background-color: #000000; }
+.sns-link-btn i { font-size: 1.4rem; }
+/* モーダル共通 */
+.modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(45, 55, 72, 0.45);
+backdrop-filter: blur(4px);
+z-index: 2000;
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
+}
+.modal.open {
+opacity: 1;
+pointer-events: auto;
+}
+.modal-content {
+width: 90%;
+max-width: 850px;
+max-height: 85vh;
+overflow-y: auto;
+background-color: #ffffff;
+padding: 3.5rem;
+border-radius: 45px;
+border: 5px solid var(--border-light);
+box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+position: relative;
+transform: scale(0.9);
+transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal.open .modal-content {
+transform: scale(1);
+}
+.close-btn {
+position: absolute;
+top: 1.8rem;
+right: 1.8rem;
+background-color: #ff9ff3;
+border: none;
+width: 48px;
+height: 48px;
+border-radius: 50%;
+font-size: 1.4rem;
+font-weight: 900;
+cursor: pointer;
+color: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 0 #e07bb9;
+z-index: 10;
+}
+.modal-body img {
+width: 100%;
+aspect-ratio: 16 / 10;
+object-fit: cover;
+border-radius: 28px;
+margin-bottom: 2rem;
+border: 3px solid var(--border-light);
+}
+.modal-body h2 {
+font-size: 2.2rem;
+font-weight: 900;
+margin-bottom: 1.2rem;
+color: var(--text-main);
+}
+.modal-body p {
+color: var(--text-muted);
+font-weight: 700;
+font-size: 1.15rem;
+line-height: 1.9;
+}
+footer {
+background-color: var(--water-blue);
+padding: 2.5rem 2rem 3rem;
+text-align: center;
+color: #ffffff;
+font-weight: 900;
+position: relative;
+z-index: 5;
+}
+.footer-logo {
+font-size: 1.8rem;
+font-weight: 900;
+color: #ffffff;
+margin-bottom: 1.2rem;
+display: inline-block;
+cursor: pointer;
+text-shadow: 0 3px 0 rgba(0,0,0,0.06);
+}
+.footer-nav {
+display: flex;
+justify-content: center;
+gap: 2.5rem;
+margin-bottom: 1.5rem;
+flex-wrap: wrap;
+}
+.footer-nav a {
+color: #ffffff;
+text-decoration: none;
+font-size: 1rem;
+font-weight: 900;
+cursor: pointer;
+transition: opacity 0.2s;
+}
+.footer-nav a:hover {
+opacity: 0.8;
+}
+.footer-copy {
+font-size: 0.9rem;
+opacity: 0.9;
+}
+
+/* ==========================================
+   スマホ表示（レスポンシブ）最適化スタイル
+   ========================================== */
+@media (max-width: 768px) {
+  .header-top {
+    padding: 1.2rem 1.5rem;
+  }
+  .logo {
+    position: static;
+    transform: none;
+    font-size: 1.5rem;
+  }
+  .header-top {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  .header-top-right {
+    margin-left: 0;
+  }
+  .sub-nav {
+    justify-content: flex-start;
+    padding: 0.8rem 1rem 2rem;
+    gap: 0.8rem;
+  }
+  .sub-nav a {
+    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
+  }
+  .white-content-section {
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+  }
+  .carousel-outer {
+    padding: 0 1rem;
+    margin-bottom: 4rem;
+  }
+  .carousel-card {
+    min-width: 100%;
+    height: 320px;
+    border-radius: 28px;
+  }
+  .carousel-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+  }
+  .carousel-prev { left: 5px; }
+  .carousel-next { right: 5px; }
+  
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+    margin-bottom: 5rem;
+  }
+  .card-work {
+    padding: 1.5rem;
+    border-radius: 30px;
+  }
+  .news-section {
+    padding: 0 1rem;
+    margin: 3rem auto 4rem;
+  }
+  .news-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  .section-header p {
+    font-size: 1rem;
+  }
+  .contact-container {
+    padding: 0 1rem;
+    margin-bottom: 5rem;
+  }
+  .contact-box {
+    padding: 2.5rem 1.5rem;
+    border-radius: 30px;
+  }
+  .modal-content {
+    width: 95%;
+    padding: 2rem 1.5rem;
+    border-radius: 30px;
+    max-height: 90vh;
+  }
+  .close-btn {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  .modal-body h2 {
+    font-size: 1.6rem;
+  }
+  .modal-body p {
+    font-size: 1rem;
+  }
+}
+</style>
 </head>
 <body>
+<header class="site-header">
+<div class="header-top">
+<a class="logo" onclick="switchView('home')">
+<i class="fa-solid fa-cloud" style="color: #ffffff;"></i> DREAMY PORTFOLIO
+</a>
+<div class="header-top-right">
+<button class="top-icon-btn" onclick="openSearchModal()"><i class="fa-solid fa-magnifying-glass"></i><span>さがす</span></button>
+<a class="top-icon-btn" href="https://designshimesaba.booth.pm/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-store"></i><span>ショップ</span></a>
+</div>
+</div>
+<nav class="sub-nav">
+<a id="nav-home" class="active" onclick="switchView('home')"><i class="fa-solid fa-house"></i> ホーム</a>
+<a id="nav-works" onclick="switchView('works')"><i class="fa-solid fa-star"></i> 制作物</a>
+<a id="nav-goods" onclick="switchView('goods')"><i class="fa-solid fa-gift"></i> グッズ</a>
+<a id="nav-news" onclick="switchView('news')"><i class="fa-solid fa-newspaper"></i> ニュース</a>
+<a id="nav-contact" onclick="switchView('contact')"><i class="fa-solid fa-envelope"></i> お問い合わせ</a>
+</nav>
+</header>
 
-    <header class="site-header">
-        <div class="header-top">
-            <a class="logo" onclick="switchView('home')">
-                <i class="fa-solid fa-cloud" style="color: #ffffff;"></i> DREAMY PORTFOLIO
-            </a>
-            <div class="header-top-right">
-                <button class="top-icon-btn" onclick="openSearchModal()"><i class="fa-solid fa-magnifying-glass"></i><span>さがす</span></button>
-                <a class="top-icon-btn" href="https://designshimesaba.booth.pm/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-store"></i><span>ショップ</span></a>
-            </div>
-        </div>
+<div class="seamless-container">
+<div class="white-content-section">
 
-        <nav class="sub-nav">
-            <a id="nav-home" class="active" onclick="switchView('home')"><i class="fa-solid fa-house"></i> ホーム</a>
-            <a id="nav-works" onclick="switchView('works')"><i class="fa-solid fa-star"></i> 制作物</a>
-            <a id="nav-goods" onclick="switchView('goods')"><i class="fa-solid fa-gift"></i> グッズ</a>
-            <a id="nav-news" onclick="switchView('news')"><i class="fa-solid fa-newspaper"></i> ニュース</a>
-            <a id="nav-contact" onclick="switchView('contact')"><i class="fa-solid fa-envelope"></i> お問い合わせ</a>
-        </nav>
-    </header>
+<!-- HOME VIEW -->
+<div id="view-home" class="page-view active-view">
+<section class="carousel-outer">
+<div class="carousel-window">
+<div class="carousel-track" id="carousel-track">
+<div class="carousel-card card-yellow" onclick="switchView('works')">
+<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80" alt="Slide 1">
+</div>
+<div class="carousel-card card-pink" onclick="switchView('works')">
+<img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80" alt="Slide 2">
+</div>
+<div class="carousel-card card-orange" onclick="switchView('works')">
+<img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80" alt="Slide 3">
+</div>
+<div class="carousel-card card-blue" onclick="switchView('news')">
+<div class="carousel-card-inner">
+<h3>🌟 スペシャルニュース</h3>
+<p>パステルカラー斜めストライプ柄とシームレスなデザインでポートフォリオをアップデート✨</p>
+</div>
+</div>
+</div>
+</div>
+<button class="carousel-arrow carousel-prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+<button class="carousel-arrow carousel-next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+<div class="carousel-dots" id="carousel-dots">
+<button class="dot active" onclick="currentSlide(0)"></button>
+<button class="dot" onclick="currentSlide(1)"></button>
+<button class="dot" onclick="currentSlide(2)"></button>
+<button class="dot" onclick="currentSlide(3)"></button>
+</div>
+</section>
 
-    <div class="seamless-container">
-        <div class="white-content-section">
-            
-            <!-- HOME VIEW -->
-            <div id="view-home" class="page-view active-view">
-                <section class="carousel-outer">
-                    <div class="carousel-window">
-                        <div class="carousel-track" id="carousel-track">
-                            <div class="carousel-card card-yellow" onclick="switchView('works')">
-                                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80" alt="Slide 1">
-                            </div>
-                            <div class="carousel-card card-pink" onclick="switchView('works')">
-                                <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80" alt="Slide 2">
-                            </div>
-                            <div class="carousel-card card-orange" onclick="switchView('works')">
-                                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80" alt="Slide 3">
-                            </div>
-                            <div class="carousel-card card-blue" onclick="switchView('news')">
-                                <div class="carousel-card-inner">
-                                    <h3>🌟 スペシャルニュース</h3>
-                                    <p>パステルカラー斜めストライプ柄とシームレスなデザインでポートフォリオをアップデート✨</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-arrow carousel-prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="carousel-arrow carousel-next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
-                    <div class="carousel-dots" id="carousel-dots">
-                        <button class="dot active" onclick="currentSlide(0)"></button>
-                        <button class="dot" onclick="currentSlide(1)"></button>
-                        <button class="dot" onclick="currentSlide(2)"></button>
-                        <button class="dot" onclick="currentSlide(3)"></button>
-                    </div>
-                </section>
+<div class="news-section">
+<a class="news-card" href="https://example.com/renewal-info" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026.09.01', '完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨', 'いつもDREAMY PORTFOLIOをご覧いただきありがとうございます。\n\n今回のリニューアルでは、背景デザインの調整や、よりスムーズな操作性を実現するためのシステム最適化を行いました。今後とも可愛い世界観の作品やグッズを続々追加予定ですので、どうぞお楽しみに！', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'https://example.com/renewal-info');">
+<span class="news-badge">重要なお知らせ</span>
+<span class="news-date">2026.09.01</span>
+<span class="news-msg">完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨</span>
+</a>
+</div>
 
-                <div class="news-section">
-                    <a class="news-card" href="https://example.com/renewal-info" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026.09.01', '完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨', 'いつもDREAMY PORTFOLIOをご覧いただきありがとうございます。\n\n今回のリニューアルでは、背景デザインの調整や、よりスムーズな操作性を実現するためのシステム最適化を行いました。今後とも可愛い世界観の作品やグッズを続々追加予定ですので、どうぞお楽しみに！', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'https://example.com/renewal-info');">
-                        <span class="news-badge">重要なお知らせ</span>
-                        <span class="news-date">2026.09.01</span>
-                        <span class="news-msg">完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨</span>
-                    </a>
-                </div>
+<div class="section-header">
+<h2>FEATURED CREATIONS</h2>
+<p>心ときめくお仕事実績やクリエイティブな作品を集めました 💧💖</p>
+</div>
 
-                <div class="section-header">
-                    <h2>FEATURED CREATIONS</h2>
-                    <p>心ときめくお仕事実績やクリエイティブな作品を集めました 💧💖</p>
-                </div>
+<div class="filter-container">
+<button class="filter-btn active" data-filter="all">ぜんぶ 🐾</button>
+<button class="filter-btn" data-filter="works">works 🎨</button>
+<button class="filter-btn" data-filter="indie">indie ⭐</button>
+</div>
 
-                <div class="filter-container">
-                    <button class="filter-btn active" data-filter="all">ぜんぶ 🐳</button>
-                    <button class="filter-btn" data-filter="works">works 🎨</button>
-                    <button class="filter-btn" data-filter="indie">indie ⭐</button>
-                </div>
+<main class="grid-container" id="grid-home">
+<div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。">
+<div class="card-work">
+<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1')">
+<i class="fa-solid fa-heart"></i> <span class="fav-count">142</span>
+</button>
+<div class="card-img-wrapper" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。')">
+<span class="card-badge-label">works</span>
+<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Work 1">
+</div>
+<div class="card-date">2026 ｜ パッケージデザイン</div>
+<div class="card-title">ソーダフロート カップ＆BOX</div>
+</div>
+</div>
 
-                <main class="grid-container" id="grid-home">
-                    <div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。">
-                        <div class="card-work">
-                            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1')">
-                                <i class="fa-solid fa-heart"></i> <span class="fav-count">142</span>
-                            </button>
-                            <div class="card-img-wrapper" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。')">
-                                <span class="card-badge-label">works</span>
-                                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Work 1">
-                            </div>
-                            <div class="card-date">2026 ｜ パッケージデザイン</div>
-                            <div class="card-title">ソーダフロート カップ＆BOX</div>
-                        </div>
-                    </div>
-                    <div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="空色シャボン玉アート" data-date="2026 ｜ インディー作品" data-img="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="自由な発想で描いたパーソナルアートワーク。青空とシャボン玉の世界観を表現。">
-                        <div class="card-work">
-                            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2')">
-                                <i class="fa-solid fa-heart"></i> <span class="fav-count">98</span>
-                            </button>
-                            <div class="card-img-wrapper" onclick="openModal('空色くまさんのインディーアート', '2026 ｜ Indie Art', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80', '自由な発想で描いたパーソナルアートワーク。青空とシャボン玉の世界観を表現。')">
-                                <span class="card-badge-label">indie</span>
-                                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" alt="Indie Art 1">
-                            </div>
-                            <div class="card-date">2026 ｜ インディー作品</div>
-                            <div class="card-title">空色シャボン玉アート</div>
-                        </div>
-                    </div>
-                    <div class="grid-item searchable-item" data-category="works" data-id="card-3" data-title="空色ステーショナリー総合セット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーとパステルカラーをふんだんに使った、ノートやシールのステーショナリー総合グッズセット。">
-                        <div class="card-work">
-                            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-3')">
-                                <i class="fa-solid fa-heart"></i> <span class="fav-count">215</span>
-                            </button>
-                            <div class="card-img-wrapper" onclick="openModal('空色くまさんのステーショナリー', '2026 ｜ Goods Design', 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80', 'スカイブルーとパステルカラーをふんだんに使った、ノートやシールのステーショナリー総合グッズセット。')">
-                                <span class="card-badge-label">works</span>
-                                <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Work 2">
-                            </div>
-                            <div class="card-date">2026 ｜ グッズデザイン</div>
-                            <div class="card-title">空色ステーショナリー総合セット</div>
-                        </div>
-                    </div>
-                </main>
-            </div>
+<div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="空色シャボン玉アート" data-date="2026 ｜ インディー作品" data-img="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="自由な発想で描いたパーソナルアートワーク。青空とシャボン玉の世界観を表現。">
+<div class="card-work">
+<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2')">
+<i class="fa-solid fa-heart"></i> <span class="fav-count">98</span>
+</button>
+<div class="card-img-wrapper" onclick="openModal('空色くまさんのインディーアート', '2026 ｜ Indie Art', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80', '自由な発想で描いたパーソナルアートワーク。青空とシャボン玉の世界観を表現。')">
+<span class="card-badge-label">indie</span>
+<img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" alt="Indie Art 1">
+</div>
+<div class="card-date">2026 ｜ インディー作品</div>
+<div class="card-title">空色シャボン玉アート</div>
+</div>
+</div>
 
-            <!-- WORKS VIEW -->
-            <div id="view-works" class="page-view">
-                <div class="section-header">
-                    <h2>WORKS & CREATIONS</h2>
-                    <p>これまでに手掛けたグラフィックデザイン、パッケージ、制作物の世界観 🎨✨</p>
-                </div>
-                <div class="grid-container">
-                    <div class="grid-item searchable-item" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。">
-                        <div class="card-work">
-                            <div class="card-img-wrapper" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。')">
-                                <span class="card-badge-label">works</span>
-                                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Work 1">
-                            </div>
-                            <div class="card-date">2026 ｜ パッケージデザイン</div>
-                            <div class="card-title">ソーダフロート カップ＆BOX</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="grid-item searchable-item" data-category="works" data-id="card-3" data-title="空色ステーショナリー総合セット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーとパステルカラーをふんだんに使った、ノートやシールのステーショナリー総合グッズセット。">
+<div class="card-work">
+<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-3')">
+<i class="fa-solid fa-heart"></i> <span class="fav-count">215</span>
+</button>
+<div class="card-img-wrapper" onclick="openModal('空色くまさんのステーショナリー', '2026 ｜ Goods Design', 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80', 'スカイブルーとパステルカラーをふんだんに使った、ノートやシールのステーショナリー総合グッズセット。')">
+<span class="card-badge-label">works</span>
+<img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Work 2">
+</div>
+<div class="card-date">2026 ｜ グッズデザイン</div>
+<div class="card-title">空色ステーショナリー総合セット</div>
+</div>
+</div>
+</main>
+</div>
 
-            <!-- GOODS VIEW -->
-            <div id="view-goods" class="page-view">
-                <div class="section-header">
-                    <h2>GOODS</h2>
-                    <p>オリジナルグッズの紹介やBOOTHへのリンクはこちらから 🎁✨</p>
-                </div>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <div class="card-work" style="text-align: center; padding: 4rem 2rem;">
-                            <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">ショップでグッズをチェック！</h3>
-                            <p style="color: var(--text-muted); margin-bottom: 2rem;">BOOTHにて様々な可愛いアイテムを販売中です。</p>
-                            <a href="https://designshimesaba.booth.pm/" target="_blank" rel="noopener noreferrer" class="filter-btn active" style="display: inline-block; text-decoration: none;">BOOTHショップへ行く 🛒</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- WORKS VIEW -->
+<div id="view-works" class="page-view">
+<div class="section-header">
+<h2>WORKS & CREATIONS</h2>
+<p>これまでに手掛けたグラフィックデザイン、パッケージ、制作物の世界観 🎨✨</p>
+</div>
+<div class="grid-container">
+<div class="grid-item searchable-item" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。">
+<div class="card-work">
+<div class="card-img-wrapper" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。')">
+<span class="card-badge-label">works</span>
+<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Work 1">
+</div>
+<div class="card-date">2026 ｜ パッケージデザイン</div>
+<div class="card-title">ソーダフロート カップ＆BOX</div>
+</div>
+</div>
+</div>
+</div>
 
-            <!-- NEWS VIEW -->
-            <div id="view-news" class="page-view">
-                <div class="section-header">
-                    <h2>NEWS</h2>
-                    <p>最新のお知らせやアップデート情報をお届けします 📰✨</p>
-                </div>
-                <div class="news-section">
-                    <a class="news-card" href="https://example.com/renewal-info" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026.09.01', '完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨', 'いつもDREAMY PORTFOLIOをご覧いただきありがとうございます。\n\n今回のリニューアルでは、背景デザインの調整や、よりスムーズな操作性を実現するためのシステム最適化を行いました。今後とも可愛い世界観の作品やグッズを続々追加予定ですので、どうぞお楽しみに！', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'https://example.com/renewal-info');">
-                        <span class="news-badge">重要なお知らせ</span>
-                        <span class="news-date">2026.09.01</span>
-                        <span class="news-msg">完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨</span>
-                    </a>
-                </div>
-            </div>
+<!-- GOODS VIEW -->
+<div id="view-goods" class="page-view">
+<div class="section-header">
+<h2>GOODS</h2>
+<p>オリジナルグッズの紹介やBOOTHへのリンクはこちらから 🎁✨</p>
+</div>
+<div class="grid-container">
+<div class="grid-item">
+<div class="card-work" style="text-align: center; padding: 4rem 2rem;">
+<h3 style="font-size: 1.8rem; margin-bottom: 1rem;">ショップでグッズをチェック！</h3>
+<p style="color: var(--text-muted); margin-bottom: 2rem;">BOOTHにて様々な可愛いアイテムを販売中です。</p>
+<a href="https://designshimesaba.booth.pm/" target="_blank" rel="noopener noreferrer" class="filter-btn active" style="display: inline-block; text-decoration: none;">BOOTHショップへ行く 🛒</a>
+</div>
+</div>
+</div>
+</div>
 
-            <!-- CONTACT VIEW -->
-            <div id="view-contact" class="page-view">
-                <div class="section-header">
-                    <h2>CONTACT</h2>
-                    <p>お仕事のご相談やご依頼は、メールまたは各種SNSからお気軽にどうぞ 💧💖</p>
-                </div>
-                <div class="contact-container">
-                    <div class="contact-box">
-                        <p class="contact-intro">
-                            いつも温かい応援をありがとうございます。<br>
-                            お問い合わせは、下記よりお好きな方法（メール起動またはXのDM）をお選びください。
-                        </p>
-                        <div class="sns-buttons-grid">
-                            <a href="mailto:your-email@example.com?subject=【お仕事のご相談】ポートフォリオからのお問い合わせ" class="sns-link-btn btn-email">
-                                <i class="fa-solid fa-envelope"></i> メールを送信 (Gmail等)
-                            </a>
-                            <a href="https://twitter.com/messages/compose?recipient_id=YOUR_TWITTER_ID" target="_blank" rel="noopener noreferrer" class="sns-link-btn btn-twitter">
-                                <i class="fa-brands fa-x-twitter"></i> X (old Twitter) DM
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- NEWS VIEW -->
+<div id="view-news" class="page-view">
+<div class="section-header">
+<h2>NEWS</h2>
+<p>最新のお知らせやアップデート情報をお届けします 📰✨</p>
+</div>
+<div class="news-section">
+<a class="news-card" href="https://example.com/renewal-info" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026.09.01', '完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨', 'いつもDREAMY PORTFOLIOをご覧いただきありがとうございます。\n\n今回のリニューアルでは、背景デザインの調整や、よりスムーズな操作性を実現するためのシステム最適化を行いました。今後とも可愛い世界観の作品やグッズを続々追加予定ですので、どうぞお楽しみに！', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'https://example.com/renewal-info');">
+<span class="news-badge">重要なお知らせ</span>
+<span class="news-date">2026.09.01</span>
+<span class="news-msg">完全ソリッドなパステルカラーとシームレス仕様でさらに洗練されたポートフォリオへリニューアルしました✨</span>
+</a>
+</div>
+</div>
 
-        </div>
-    </div>
+<!-- CONTACT VIEW -->
+<div id="view-contact" class="page-view">
+<div class="section-header">
+<h2>CONTACT</h2>
+<p>お仕事のご相談やご依頼は、メールまたは各種SNSからお気軽にどうぞ 💧💖</p>
+</div>
+<div class="contact-container">
+<div class="contact-box">
+<p class="contact-intro">
+いつも温かい応援をありがとうございます。<br>
+お問い合わせは、下記よりお好きな方法（メール起動またはXのDM）をお選びください。
+</p>
+<div class="sns-buttons-grid">
+<a href="mailto:your-email@example.com?subject=【お仕事のご相談】ポートフォリオからのお問い合わせ" class="sns-link-btn btn-email">
+<i class="fa-solid fa-envelope"></i> メールを送信 (Gmail等)
+</a>
+<a href="https://twitter.com/messages/compose?recipient_id=YOUR_TWITTER_ID" target="_blank" rel="noopener noreferrer" class="sns-link-btn btn-twitter">
+<i class="fa-brands fa-x-twitter"></i> X (old Twitter) DM
+</a>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- モーダル（ポップアップ表示用） -->
-    <div class="modal" id="globalModal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-body" id="modalBodyContent">
-                <!-- 動的にコンテンツが挿入されます -->
-            </div>
-        </div>
-    </div>
+</div>
+</div>
 
-    <footer>
-        <div class="footer-logo" onclick="switchView('home')">DREAMY PORTFOLIO 🐬✨</div>
-        <div class="footer-nav">
-            <a onclick="switchView('home')">ホーム</a>
-            <a onclick="switchView('works')">制作物</a>
-            <a onclick="switchView('goods')">グッズ</a>
-            <a onclick="switchView('news')">ニュース</a>
-            <a onclick="switchView('contact')">お問い合わせ</a>
-        </div>
-        <div class="footer-copy">&copy; 2026 DREAMY PORTFOLIO. All Rights Reserved.</div>
-    </footer>
+<!-- モーダル（ポップアップ表示用） -->
+<div class="modal" id="globalModal" onclick="closeModal()">
+<div class="modal-content" onclick="event.stopPropagation()">
+<button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+<div class="modal-body" id="modalBodyContent">
+<!-- 動的にコンテンツが挿入されます -->
+</div>
+</div>
+</div>
 
-    <script>
-        // ページ切り替え機能
-        function switchView(viewName) {
-            document.querySelectorAll('.page-view').forEach(view => {
-                view.classList.remove('active-view');
-            });
-            document.querySelectorAll('.sub-nav a').forEach(nav => {
-                nav.classList.remove('active');
-            });
+<footer>
+<div class="footer-logo" onclick="switchView('home')">DREAMY PORTFOLIO 🐬✨</div>
+<div class="footer-nav">
+<a onclick="switchView('home')">ホーム</a>
+<a onclick="switchView('works')">制作物</a>
+<a onclick="switchView('goods')">グッズ</a>
+<a onclick="switchView('news')">ニュース</a>
+<a onclick="switchView('contact')">お問い合わせ</a>
+</div>
+<div class="footer-copy">&copy; 2026 DREAMY PORTFOLIO. All Rights Reserved.</div>
+</footer>
 
-            const targetView = document.getElementById('view-' + viewName);
-            const targetNav = document.getElementById('nav-' + viewName);
+<script>
+// ページ切り替え機能
+function switchView(viewName) {
+document.querySelectorAll('.page-view').forEach(view => {
+view.classList.remove('active-view');
+});
+document.querySelectorAll('.sub-nav a').forEach(nav => {
+nav.classList.remove('active');
+});
+const targetView = document.getElementById('view-' + viewName);
+const targetNav = document.getElementById('nav-' + viewName);
+if (targetView) targetView.classList.add('active-view');
+if (targetNav) targetNav.classList.add('active');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-            if (targetView) targetView.classList.add('active-view');
-            if (targetNav) targetNav.classList.add('active');
+// カレントスライド管理（カルーセル用）
+let currentSlideIndex = 0;
+const track = document.getElementById('carousel-track');
+const dots = document.querySelectorAll('.dot');
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+function updateCarousel() {
+if (!track) return;
+const cardWidth = track.querySelector('.carousel-card').offsetWidth + 40;
+track.style.transform = `translateX(-${currentSlideIndex * cardWidth}px)`;
+dots.forEach((dot, index) => {
+dot.classList.toggle('active', index === currentSlideIndex);
+});
+}
 
-        // カレントスライド管理（カルーセル用）
-        let currentSlideIndex = 0;
-        const track = document.getElementById('carousel-track');
-        const dots = document.querySelectorAll('.dot');
+function nextSlide() {
+const totalCards = track.children.length;
+currentSlideIndex = (currentSlideIndex + 1) % totalCards;
+updateCarousel();
+}
 
-        function updateCarousel() {
-            if (!track) return;
-            const cardWidth = track.querySelector('.carousel-card').offsetWidth + 40;
-            track.style.transform = `translateX(-${currentSlideIndex * cardWidth}px)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlideIndex);
-            });
-        }
+function prevSlide() {
+const totalCards = track.children.length;
+currentSlideIndex = (currentSlideIndex - 1 + totalCards) % totalCards;
+updateCarousel();
+}
 
-        function nextSlide() {
-            const totalCards = track.children.length;
-            currentSlideIndex = (currentSlideIndex + 1) % totalCards;
-            updateCarousel();
-        }
+function currentSlide(index) {
+currentSlideIndex = index;
+updateCarousel();
+}
 
-        function prevSlide() {
-            const totalCards = track.children.length;
-            currentSlideIndex = (currentSlideIndex - 1 + totalCards) % totalCards;
-            updateCarousel();
-        }
+// 検索モーダルを開く関数
+function openSearchModal() {
+const modal = document.getElementById('globalModal');
+const bodyContent = document.getElementById('modalBodyContent');
+bodyContent.innerHTML = `
+<h2><i class="fa-solid fa-magnifying-glass"></i> 作品をさがす</h2>
+<div class="search-box-wrapper">
+<input type="text" id="searchInputField" class="search-input" placeholder="キーワードを入力してね（例：ソーダ、空色…）" oninput="filterSearchResults(this.value)">
+</div>
+<div class="search-results-grid" id="searchResultsGrid">
+<!-- 初期状態では全作品を表示 -->
+</div>
+`;
+modal.classList.add('open');
+renderSearchResults('');
+}
 
-        function currentSlide(index) {
-            currentSlideIndex = index;
-            updateCarousel();
-        }
+// 検索キーワードに応じて作品を絞り込む関数
+function renderSearchResults(keyword) {
+const grid = document.getElementById('searchResultsGrid');
+if (!grid) return;
+const items = document.querySelectorAll('.searchable-item');
+let html = '';
+let count = 0;
+items.forEach(item => {
+const title = item.getAttribute('data-title') || '';
+const date = item.getAttribute('data-date') || '';
+const img = item.getAttribute('data-img') || '';
+const modalImg = item.getAttribute('data-modalimg') || img;
+const desc = item.getAttribute('data-desc') || '';
+if (title.toLowerCase().includes(keyword.toLowerCase()) || date.toLowerCase().includes(keyword.toLowerCase()) || desc.toLowerCase().includes(keyword.toLowerCase())) {
+html += `
+<div class="search-result-card" onclick="openModal('${title}', '${date}', '${modalImg}', '${desc}')">
+<img src="${img}" alt="${title}">
+<h4>${title}</h4>
+<p>${date}</p>
+</div>
+`;
+count++;
+}
+});
+if (count === 0) {
+html = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">みつかりませんでした💧 別のキーワードで試してね！</p>`;
+}
+grid.innerHTML = html;
+}
 
-        // 検索モーダルを開く関数
-        function openSearchModal() {
-            const modal = document.getElementById('globalModal');
-            const bodyContent = document.getElementById('modalBodyContent');
-            
-            bodyContent.innerHTML = `
-                <h2><i class="fa-solid fa-magnifying-glass"></i> 作品をさがす</h2>
-                <div class="search-box-wrapper">
-                    <input type="text" id="searchInputField" class="search-input" placeholder="キーワードを入力してね（例：ソーダ、空色…）" oninput="filterSearchResults(this.value)">
-                </div>
-                <div class="search-results-grid" id="searchResultsGrid">
-                    <!-- 初期状態では全作品を表示 -->
-                </div>
-            `;
-            modal.classList.add('open');
-            renderSearchResults('');
-        }
+function filterSearchResults(value) {
+renderSearchResults(value);
+}
 
-        // 検索キーワードに応じて作品を絞り込む関数
-        function renderSearchResults(keyword) {
-            const grid = document.getElementById('searchResultsGrid');
-            if (!grid) return;
+// モーダル（ポップアップ）制御用関数
+function openModal(title, date, imgUrl, desc) {
+const modal = document.getElementById('globalModal');
+const bodyContent = document.getElementById('modalBodyContent');
+bodyContent.innerHTML = `
+<img src="${imgUrl}" alt="${title}">
+<div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
+<h2>${title}</h2>
+<p>${desc}</p>
+`;
+modal.classList.add('open');
+}
 
-            const items = document.querySelectorAll('.searchable-item');
-            let html = '';
-            let count = 0;
+// お知らせ用ポップアップ関数
+function openNewsModal(title, date, summary, fullText, imgUrl, linkUrl) {
+const modal = document.getElementById('globalModal');
+const bodyContent = document.getElementById('modalBodyContent');
+const formattedText = fullText.replace(/\n/g, '<br>');
+bodyContent.innerHTML = `
+${imgUrl ? `<img src="${imgUrl}" alt="${title}">` : ''}
+<div class="news-badge" style="display:inline-block; margin-bottom:1rem;">${title}</div>
+<div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
+<h2>${summary}</h2>
+<p style="margin-bottom: 2rem;">${formattedText}</p>
+${linkUrl ? `<div style="text-align:center;"><a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="filter-btn active" style="display:inline-block; text-decoration:none;">公式サイト詳細を見る ↗</a></div>` : ''}
+`;
+modal.classList.add('open');
+}
 
-            items.forEach(item => {
-                const title = item.getAttribute('data-title') || '';
-                const date = item.getAttribute('data-date') || '';
-                const img = item.getAttribute('data-img') || '';
-                const modalImg = item.getAttribute('data-modalimg') || img;
-                const desc = item.getAttribute('data-desc') || '';
+function closeModal() {
+const modal = document.getElementById('globalModal');
+modal.classList.remove('open');
+}
 
-                if (title.toLowerCase().includes(keyword.toLowerCase()) || date.toLowerCase().includes(keyword.toLowerCase()) || desc.toLowerCase().includes(keyword.toLowerCase())) {
-                    html += `
-                        <div class="search-result-card" onclick="openModal('${title}', '${date}', '${modalImg}', '${desc}')">
-                            <img src="${img}" alt="${title}">
-                            <h4>${title}</h4>
-                            <p>${date}</p>
-                        </div>
-                    `;
-                    count++;
-                }
-            });
-
-            if (count === 0) {
-                html = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">みつかりませんでした💧 別のキーワードで試してね！</p>`;
-            }
-
-            grid.innerHTML = html;
-        }
-
-        function filterSearchResults(value) {
-            renderSearchResults(value);
-        }
-
-        // モーダル（ポップアップ）制御用関数
-        function openModal(title, date, imgUrl, desc) {
-            const modal = document.getElementById('globalModal');
-            const bodyContent = document.getElementById('modalBodyContent');
-            bodyContent.innerHTML = `
-                <img src="${imgUrl}" alt="${title}">
-                <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
-                <h2>${title}</h2>
-                <p>${desc}</p>
-            `;
-            modal.classList.add('open');
-        }
-
-        // お知らせ用ポップアップ関数
-        function openNewsModal(title, date, summary, fullText, imgUrl, linkUrl) {
-            const modal = document.getElementById('globalModal');
-            const bodyContent = document.getElementById('modalBodyContent');
-            
-            const formattedText = fullText.replace(/\n/g, '<br>');
-
-            bodyContent.innerHTML = `
-                ${imgUrl ? `<img src="${imgUrl}" alt="${title}">` : ''}
-                <div class="news-badge" style="display:inline-block; margin-bottom:1rem;">${title}</div>
-                <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
-                <h2>${summary}</h2>
-                <p style="margin-bottom: 2rem;">${formattedText}</p>
-                ${linkUrl ? `<div style="text-align:center;"><a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="filter-btn active" style="display:inline-block; text-decoration:none;">公式サイト詳細を見る ↗</a></div>` : ''}
-            `;
-            modal.classList.add('open');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('globalModal');
-            modal.classList.remove('open');
-        }
-
-        // お気に入りボタンの切り替え（各作品カード内）
-        function toggleFavorite(btn, cardId) {
-            btn.classList.toggle('liked');
-            const countSpan = btn.querySelector('.fav-count');
-            let count = parseInt(countSpan.textContent);
-            if (btn.classList.contains('liked')) {
-                count += 1;
-            } else {
-                count -= 1;
-            }
-            countSpan.textContent = count;
-        }
-    </script>
+// お気に入りボタンの切り替え（各作品カード内）
+function toggleFavorite(btn, cardId) {
+btn.classList.toggle('liked');
+const countSpan = btn.querySelector('.fav-count');
+let count = parseInt(countSpan.textContent);
+if (btn.classList.contains('liked')) {
+count += 1;
+} else {
+count -= 1;
+}
+countSpan.textContent = count;
+}
+</script>
 </body>
 </html>
