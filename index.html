@@ -48,41 +48,39 @@ background-color: var(--water-blue);
 width: 100%;
 position: relative;
 z-index: 100;
-padding-bottom: 1rem;
+padding-bottom: 0.5rem;
 }
-.header-top {
-max-width: 1400px;
+.header-inner {
+max-width: 1200px;
 margin: 0 auto;
-padding: 1.2rem 2rem;
+padding: 1.2rem 1.5rem 0.5rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+}
+.header-main-row {
+width: 100%;
 display: flex;
 justify-content: space-between;
 align-items: center;
-position: relative;
 }
 .logo {
-font-size: 2.2rem;
+font-size: 2rem;
 font-weight: 900;
 color: #ffffff;
 text-decoration: none;
 display: flex;
 align-items: center;
-gap: 0.8rem;
-letter-spacing: 0.05em;
-margin: 0 auto;
-position: absolute;
-left: 50%;
-transform: translateX(-50%);
+gap: 0.6rem;
+letter-spacing: 0.03em;
 cursor: pointer;
 text-shadow: 0 3px 0 rgba(0,0,0,0.06);
 }
-.header-top-left, .header-top-right {
+.header-actions {
 display: flex;
-gap: 1.2rem;
+gap: 1rem;
 align-items: center;
-z-index: 2;
-}
-.header-top-right {
-margin-left: auto;
 }
 .top-icon-btn {
 background: transparent;
@@ -114,25 +112,25 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 opacity: 0.85;
 }
 
-/* サブナビゲーション（PC用） */
+/* サブナビゲーション */
 .sub-nav {
 display: flex;
 justify-content: center;
 align-items: center;
-gap: 1rem;
-padding: 0.5rem 1.5rem 2rem;
-max-width: 1350px;
-margin: 0 auto;
+gap: 0.8rem;
+flex-wrap: wrap;
+padding: 0.5rem 0 1rem;
+width: 100%;
 }
 .sub-nav a {
 color: #ffffff;
 text-decoration: none;
-font-size: 1rem;
+font-size: 0.95rem;
 font-weight: 900;
 display: flex;
 align-items: center;
 gap: 0.5rem;
-padding: 0.5rem 1.4rem;
+padding: 0.5rem 1.2rem;
 border-radius: 9999px;
 background-color: transparent;
 transition: all 0.2s;
@@ -323,7 +321,6 @@ flex-grow: 1;
 text-align: left;
 }
 
-/* セクションタイトルはすべて中央揃え */
 .section-header {
 text-align: center;
 margin: 4rem auto 2.5rem;
@@ -388,7 +385,6 @@ transition: transform 0.3s ease;
 transform: translateY(-6px);
 }
 
-/* カード内の文字を中央寄せに変更 */
 .card-work {
 background-color: rgba(255, 255, 255, 0.95);
 padding: 1.8rem;
@@ -585,7 +581,6 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 .btn-twitter { background-color: #000000; }
 .sns-link-btn i { font-size: 1.3rem; }
 
-/* モーダル内も中央寄せに最適化 */
 .modal {
 position: fixed;
 top: 0;
@@ -667,7 +662,7 @@ line-height: 1.8;
 margin-bottom: 1.5rem;
 text-align: center;
 }
-.modal-shop-btn {
+.modal-shop-btn, .modal-dl-btn {
 display: inline-flex;
 align-items: center;
 gap: 0.8rem;
@@ -682,26 +677,7 @@ box-shadow: 0 6px 0 #e07bb9;
 transition: transform 0.2s;
 margin-top: 1rem;
 }
-.modal-shop-btn:hover {
-transform: translateY(-2px);
-}
-/* フリー素材ダウンロードボタン用のスタイル（ショップリンクを適用） */
-.modal-dl-btn {
-display: inline-flex;
-align-items: center;
-gap: 0.8rem;
-background-color: #ff9ff3;
-color: #ffffff;
-padding: 0.9rem 2rem;
-border-radius: 9999px;
-font-size: 1rem;
-font-weight: 900;
-text-decoration: none;
-box-shadow: 0 6px 0 #e07bb9;
-transition: transform 0.2s;
-margin-top: 1rem;
-}
-.modal-dl-btn:hover {
+.modal-shop-btn:hover, .modal-dl-btn:hover {
 transform: translateY(-2px);
 }
 
@@ -747,35 +723,18 @@ opacity: 0.9;
 }
 
 /* ==========================================
-   スマホ（縦画面）最適化用メディアクエリ
+   スマホ最適化用メディアクエリ
    ========================================== */
 @media (max-width: 768px) {
-  .site-header {
-    padding-bottom: 0.5rem;
-  }
-  .header-top {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem 1.2rem 0.5rem;
-    align-items: center;
+  .header-inner {
+    padding: 1rem 1rem 0.3rem;
   }
   .logo {
-    position: static;
-    transform: none;
     font-size: 1.35rem;
-    margin: 0;
+    gap: 0.4rem;
   }
   .logo i {
     font-size: 1.1rem;
-  }
-  .header-top-left {
-    display: none;
-  }
-  .header-top-right {
-    width: auto !important;
-    justify-content: flex-end !important;
-    gap: 0.8rem !important;
-    margin-left: 0 !important;
   }
   .top-icon-btn {
     font-size: 0.7rem;
@@ -783,27 +742,16 @@ opacity: 0.9;
   .top-icon-btn i {
     width: 34px;
     height: 34px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
-  
   .sub-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0.5rem 1rem 1.2rem;
-    gap: 0.5rem;
+    gap: 0.4rem;
+    padding: 0.3rem 0 0.8rem;
   }
   .sub-nav a {
-    background-color: #ffffff;
-    color: var(--water-blue);
-    font-size: 0.85rem;
-    padding: 0.4rem 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    border-radius: 9999px;
-  }
-  .sub-nav a.active {
-    background-color: var(--water-blue-dark);
-    color: #ffffff;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.85rem;
   }
   .white-content-section {
     border-top-left-radius: 30px;
@@ -826,7 +774,6 @@ opacity: 0.9;
     height: 36px;
     font-size: 0.85rem;
   }
-  
   .grid-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -893,12 +840,12 @@ opacity: 0.9;
 </head>
 <body>
 <header class="site-header">
-<div class="header-top">
-<div class="header-top-left"></div>
+<div class="header-inner">
+<div class="header-main-row">
 <a class="logo" onclick="switchView('home')">
-<i class="fa-solid fa-cloud" style="color: #ffffff;"></i> DREAMY PORTFOLIO
+<i class="fa-solid fa-cloud"></i> DREAMY PORTFOLIO
 </a>
-<div class="header-top-right">
+<div class="header-actions">
 <button class="top-icon-btn" onclick="openSearchModal()"><i class="fa-solid fa-magnifying-glass"></i><span>さがす</span></button>
 <a class="top-icon-btn" href="https://designshimesaba.booth.pm/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i><span>ショップ</span></a>
 </div>
@@ -910,12 +857,12 @@ opacity: 0.9;
 <a id="nav-news" onclick="switchView('news')"><i class="fa-solid fa-newspaper"></i> ニュース</a>
 <a id="nav-contact" onclick="switchView('contact')"><i class="fa-solid fa-envelope"></i> お問い合わせ</a>
 </nav>
+</div>
 </header>
 
 <div class="seamless-container">
 <div class="white-content-section">
 
-<!-- HOME VIEW -->
 <div id="view-home" class="page-view active-view">
 <section class="carousel-outer" id="carouselOuter">
 <div class="carousel-window">
@@ -996,14 +943,12 @@ opacity: 0.9;
 </main>
 </div>
 
-<!-- FREE MATERIALS VIEW -->
 <div id="view-works" class="page-view">
 <div class="section-header">
 <h2>FREE MATERIALS</h2>
 <p>ご自由にお使いいただけるフリー素材のダウンロードはこちらから 🎨✨</p>
 </div>
 <div class="grid-container">
-<!-- ▼ ここにショップのリンクURL（第5引数）を設定できます ▼ -->
 <div class="grid-item" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ フリー素材" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80">
 <div class="card-work" onclick="openModal('ソーダフロート カップ＆BOX', '2026 ｜ フリー素材', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにしたフリー素材セットです。', 'https://designshimesaba.booth.pm/', true)">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1-works')">
@@ -1020,7 +965,6 @@ opacity: 0.9;
 </div>
 </div>
 
-<!-- GOODS VIEW -->
 <div id="view-goods" class="page-view">
 <div class="section-header">
 <h2>GOODS</h2>
@@ -1044,7 +988,6 @@ opacity: 0.9;
 </div>
 </div>
 
-<!-- NEWS VIEW -->
 <div id="view-news" class="page-view">
 <div class="section-header">
 <h2>NEWS</h2>
@@ -1059,7 +1002,6 @@ opacity: 0.9;
 </div>
 </div>
 
-<!-- CONTACT VIEW -->
 <div id="view-contact" class="page-view">
 <div class="section-header">
 <h2>CONTACT</h2>
@@ -1086,7 +1028,6 @@ opacity: 0.9;
 </div>
 </div>
 
-<!-- モーダル -->
 <div class="modal" id="globalModal" onclick="closeModal()">
 <div class="modal-content" onclick="event.stopPropagation()">
 <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -1226,7 +1167,6 @@ if (!grid) return;
 const items = document.querySelectorAll('.searchable-item');
 let html = '';
 let count = 0;
-items.eval = items.forEach || items; // safety
 items.forEach(item => {
 const title = item.getAttribute('data-title') || '';
 const date = item.getAttribute('data-date') || '';
@@ -1261,7 +1201,7 @@ const bodyContent = document.getElementById('modalBodyContent');
 let btnHtml = '';
 if (url) {
 if (isDownload) {
-btnHtml = `<a class="modal-dl-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-download"></i> 素材をダウンロード</a>`;
+btnHtml = `<a class="modal-dl-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i> ショップでダウンロード</a>`;
 } else {
 btnHtml = `<a class="modal-shop-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i> ショップで詳細を見る</a>`;
 }
@@ -1285,7 +1225,7 @@ ${imgUrl ? `<img src="${imgUrl}" alt="${title}">` : ''}
 <div class="news-badge" style="display:inline-block; margin-bottom:1rem;">${title}</div>
 <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
 <h2>${summary}</h2>
-<p style="margin-bottom: 2rem;">${formattedText}</p>
+<p style="margin-bottom: 2rem;">${formattedTest ? formattedTest : formattedText}</p>
 `;
 modal.classList.add('open');
 }
