@@ -42,7 +42,8 @@ animation: fadeIn 0.4s ease forwards;
 to { opacity: 1; }
 }
 
-/* ヘッダー周り */
+
+/* ヘッダー全体を中央寄せベースに改修 */
 .site-header {
 background-color: var(--water-blue);
 width: 100%;
@@ -56,7 +57,7 @@ margin: 0 auto;
 padding: 1.2rem 1.5rem 0.5rem;
 display: flex;
 flex-direction: column;
-align-items: center;
+align-items: center; /* 常に中央揃え */
 gap: 0.8rem;
 }
 .header-main-row {
@@ -64,6 +65,11 @@ width: 100%;
 display: flex;
 justify-content: space-between;
 align-items: center;
+position: relative;
+}
+/* ダミー要素を置いてロゴを絶対配置で真ん中にする */
+.header-spacer {
+width: 80px;
 }
 .logo {
 font-size: 2rem;
@@ -76,6 +82,9 @@ gap: 0.6rem;
 letter-spacing: 0.03em;
 cursor: pointer;
 text-shadow: 0 3px 0 rgba(0,0,0,0.06);
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
 }
 .header-actions {
 display: flex;
@@ -112,7 +121,8 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 opacity: 0.85;
 }
 
-/* サブナビゲーション */
+
+/* サブナビゲーション（メニュー）も常に中央揃え */
 .sub-nav {
 display: flex;
 justify-content: center;
@@ -143,6 +153,7 @@ color: var(--water-blue);
 box-shadow: 0 4px 15px rgba(0,0,0,0.06);
 }
 
+
 .seamless-container {
 background-color: var(--water-blue);
 position: relative;
@@ -166,6 +177,7 @@ position: relative;
 z-index: 10;
 min-height: 80vh;
 }
+
 
 /* カルーセル */
 .carousel-outer {
@@ -263,6 +275,7 @@ background-color: var(--water-blue);
 transform: scale(1.3);
 }
 
+
 .page-view {
 display: none;
 animation: fadeInView 0.3s ease forwards;
@@ -274,6 +287,7 @@ display: block;
 from { opacity: 0; transform: translateY(8px); }
 to { opacity: 1; transform: translateY(0); }
 }
+
 
 .news-section {
 max-width: 1000px;
@@ -322,6 +336,7 @@ flex-grow: 1;
 text-align: left;
 }
 
+
 .section-header {
 text-align: center;
 margin: 4rem auto 2.5rem;
@@ -337,6 +352,7 @@ margin-bottom: 0.8rem;
 color: var(--text-muted);
 font-size: 1.05rem;
 }
+
 
 .filter-container {
 display: flex;
@@ -370,6 +386,7 @@ border-color: var(--water-blue-dark);
 box-shadow: 0 4px 0 var(--water-blue-dark);
 }
 
+
 .grid-container {
 max-width: 1200px;
 margin: 0 auto 6rem;
@@ -385,6 +402,7 @@ transition: transform 0.3s ease;
 .grid-item:hover {
 transform: translateY(-6px);
 }
+
 
 .card-work {
 background-color: rgba(255, 255, 255, 0.95);
@@ -460,6 +478,7 @@ color: #d63384;
 border-color: #ff9ff3;
 }
 
+
 .search-box-wrapper {
 margin-bottom: 1.8rem;
 display: flex;
@@ -520,6 +539,7 @@ color: var(--text-muted);
 text-align: center;
 }
 
+
 .contact-container {
 max-width: 800px;
 margin: 0 auto 6rem;
@@ -568,7 +588,8 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 .btn-twitter { background-color: #000000; }
 .sns-link-btn i { font-size: 1.3rem; }
 
-/* モーダル・詳細ページ内の複数画像スライダー用スタイル */
+
+/* モーダル */
 .modal {
 position: fixed;
 top: 0;
@@ -627,7 +648,7 @@ box-shadow: 0 4px 0 #e07bb9;
 z-index: 10;
 }
 
-/* 複数画像スライダーのコンテナ */
+
 .modal-slider-container {
 position: relative;
 width: 100%;
@@ -703,6 +724,7 @@ background-color: var(--water-blue);
 transform: scale(1.3);
 }
 
+
 .modal-body h2 {
 font-size: 1.9rem;
 font-weight: 900;
@@ -736,6 +758,7 @@ margin-top: 1rem;
 .modal-shop-btn:hover, .modal-dl-btn:hover {
 transform: translateY(-2px);
 }
+
 
 footer {
 background-color: var(--water-blue);
@@ -778,10 +801,14 @@ font-size: 0.85rem;
 opacity: 0.9;
 }
 
-/* スマホ最適化 */
+
+/* スマホ・小画面最適化（常に中央揃えを維持） */
 @media (max-width: 768px) {
   .header-inner {
     padding: 1rem 1rem 0.3rem;
+  }
+  .header-spacer {
+    width: 60px;
   }
   .logo {
     font-size: 1.35rem;
@@ -899,6 +926,7 @@ opacity: 0.9;
 <header class="site-header">
 <div class="header-inner">
 <div class="header-main-row">
+<div class="header-spacer"></div>
 <a class="logo" onclick="switchView('home')">
 <i class="fa-solid fa-cloud"></i> DREAMY PORTFOLIO
 </a>
@@ -917,8 +945,10 @@ opacity: 0.9;
 </div>
 </header>
 
+
 <div class="seamless-container">
 <div class="white-content-section">
+
 
 <div id="view-home" class="page-view active-view">
 <section class="carousel-outer" id="carouselOuter">
@@ -951,6 +981,7 @@ opacity: 0.9;
 </div>
 </section>
 
+
 <div class="news-section">
 <a class="news-card" href="#" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026/03/27', '商品の自主回収に関するお詫びとお知らせ', 'いつもDREAMY PORTFOLIOをご愛顧いただき誠にありがとうございます。\n\nこの度、一部商品において品質上の問題が判明したため、自主回収を実施させていただくこととなりました。', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', '');">
 <span class="news-badge">重要なお知らせ</span>
@@ -959,16 +990,19 @@ opacity: 0.9;
 </a>
 </div>
 
+
 <div class="section-header">
 <h2>FEATURED CREATIONS</h2>
 <p>心ときめくお仕事実績やクリエイティブな作品を集めました 💧💖</p>
 </div>
+
 
 <div class="filter-container">
 <button class="filter-btn active" data-filter="all">ぜんぶ 🐾</button>
 <button class="filter-btn" data-filter="works">works 🎨</button>
 <button class="filter-btn" data-filter="indie">indie ⭐</button>
 </div>
+
 
 <main class="grid-container" id="grid-home">
 <div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。複数枚の写真をスライドで確認できます！" data-url="">
@@ -985,6 +1019,7 @@ opacity: 0.9;
 </div>
 </div>
 
+
 <div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
 <div class="card-work" onclick="openModalFromElement(this)">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2')">
@@ -1000,6 +1035,7 @@ opacity: 0.9;
 </div>
 </main>
 </div>
+
 
 <div id="view-works" class="page-view">
 <div class="section-header">
@@ -1023,6 +1059,7 @@ opacity: 0.9;
 </div>
 </div>
 
+
 <div id="view-goods" class="page-view">
 <div class="section-header">
 <h2>GOODS</h2>
@@ -1045,6 +1082,7 @@ opacity: 0.9;
 </div>
 </div>
 
+
 <div id="view-news" class="page-view">
 <div class="section-header">
 <h2>NEWS</h2>
@@ -1058,6 +1096,7 @@ opacity: 0.9;
 </a>
 </div>
 </div>
+
 
 <div id="view-contact" class="page-view">
 <div class="section-header">
@@ -1082,8 +1121,10 @@ opacity: 0.9;
 </div>
 </div>
 
+
 </div>
 </div>
+
 
 <div class="modal" id="globalModal" onclick="closeModal()">
 <div class="modal-content" onclick="event.stopPropagation()">
@@ -1091,6 +1132,7 @@ opacity: 0.9;
 <div class="modal-body" id="modalBodyContent"></div>
 </div>
 </div>
+
 
 <footer>
 <div class="footer-logo" onclick="switchView('home')">DREAMY PORTFOLIO 🐬✨</div>
@@ -1103,6 +1145,7 @@ opacity: 0.9;
 </div>
 <div class="footer-copy">&copy; 2026 DREAMY PORTFOLIO. All Rights Reserved.</div>
 </footer>
+
 
 <script>
 function switchView(viewName) {
@@ -1119,10 +1162,12 @@ if (targetNav) targetNav.classList.add('active');
 window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+
 let currentSlideIndex = 0;
 const track = document.getElementById('carousel-track');
 const dots = document.querySelectorAll('.dot');
 let autoPlayTimer = null;
+
 
 function updateCarousel() {
 if (!track) return;
@@ -1133,11 +1178,13 @@ dot.classList.toggle('active', index === currentSlideIndex);
 });
 }
 
+
 function nextSlide() {
 const totalCards = track.children.length;
 currentSlideIndex = (currentSlideIndex + 1) % totalCards;
 updateCarousel();
 }
+
 
 function prevSlide() {
 const totalCards = track.children.length;
@@ -1145,11 +1192,13 @@ currentSlideIndex = (currentSlideIndex - 1 + totalCards) % totalCards;
 updateCarousel();
 }
 
+
 function currentSlide(index) {
 currentSlideIndex = index;
 updateCarousel();
 resetAutoPlay();
 }
+
 
 function startAutoPlay() {
 autoPlayTimer = setInterval(() => {
@@ -1157,18 +1206,22 @@ nextSlide();
 }, 3000);
 }
 
+
 function resetAutoPlay() {
 clearInterval(autoPlayTimer);
 startAutoPlay();
 }
 
+
 document.querySelectorAll('.carousel-arrow').forEach(btn => {
 btn.addEventListener('click', resetAutoPlay);
 });
 
+
 window.addEventListener('resize', () => {
 updateCarousel();
 });
+
 
 const carouselOuter = document.getElementById('carouselOuter');
 if (carouselOuter) {
@@ -1180,7 +1233,9 @@ startAutoPlay();
 });
 }
 
+
 startAutoPlay();
+
 
 document.addEventListener('DOMContentLoaded', () => {
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -1189,8 +1244,10 @@ button.addEventListener('click', () => {
 filterButtons.forEach(btn => btn.classList.remove('active'));
 button.classList.add('active');
 
+
 const filterValue = button.getAttribute('data-filter');
 const searchableItems = document.querySelectorAll('.searchable-item');
+
 
 searchableItems.forEach(item => {
 const category = item.getAttribute('data-category');
@@ -1203,6 +1260,7 @@ item.style.display = 'none';
 });
 });
 });
+
 
 function openSearchModal() {
 const modal = document.getElementById('globalModal');
@@ -1217,6 +1275,7 @@ bodyContent.innerHTML = `
 modal.classList.add('open');
 renderSearchResults('');
 }
+
 
 function renderSearchResults(keyword) {
 const grid = document.getElementById('searchResultsGrid');
@@ -1233,13 +1292,14 @@ const desc = item.getAttribute('data-desc') || '';
 const url = item.getAttribute('data-url') || '';
 const isDownload = item.getAttribute('data-download') === 'true';
 
+
 if (title.toLowerCase().includes(keyword.toLowerCase()) || date.toLowerCase().includes(keyword.toLowerCase())) {
-// 検索カード用のエスケープ処理
 const escapedImages = images.replace(/'/g, "&apos;");
 const escapedTitle = title.replace(/'/g, "&apos;");
 const escapedDate = date.replace(/'/g, "&apos;");
 const escapedDesc = desc.replace(/'/g, "&apos;");
 const escapedUrl = url.replace(/'/g, "&apos;");
+
 
 html += `
 <div class="search-result-card" onclick="openModal('${escapedTitle}', '${escapedDate}', '${escapedImages}', '${escapedDesc}', '${escapedUrl}', ${isDownload})">
@@ -1257,11 +1317,12 @@ html = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-mut
 grid.innerHTML = html;
 }
 
+
 function filterSearchResults(value) {
 renderSearchResults(value);
 }
 
-// カードから直接クリックされたときに要素の属性を取得してモーダルを開く
+
 function openModalFromElement(cardElement) {
 const item = cardElement.closest('.searchable-item');
 if (!item) return;
@@ -1272,22 +1333,26 @@ const desc = item.getAttribute('data-desc');
 const url = item.getAttribute('data-url');
 const isDownload = item.getAttribute('data-download') === 'true';
 
+
 openModal(title, date, images, desc, url, isDownload);
 }
 
-// モーダル内で複数画像をスライド表示する処理
+
 let currentModalSlide = 0;
+
 
 function openModal(title, date, imagesStr, desc, url, isDownload = false) {
 const modal = document.getElementById('globalModal');
 const bodyContent = document.getElementById('modalBodyContent');
 currentModalSlide = 0;
 
-// カンマ区切りで複数画像のURLを配列にする
+
 const images = imagesStr ? imagesStr.split(',').map(s => s.trim()) : [];
+
 
 let slidesHtml = '';
 let dotsHtml = '';
+
 
 images.forEach((imgUrl, index) => {
 slidesHtml += `
@@ -1299,6 +1364,7 @@ dotsHtml += `
 <button class="modal-dot ${index === 0 ? 'active' : ''}" onclick="currentModalSlideIndex(${index})"></button>
 `;
 });
+
 
 let sliderSection = '';
 if (images.length > 1) {
@@ -1326,6 +1392,7 @@ sliderSection = `
 `;
 }
 
+
 let btnHtml = '';
 if (url) {
 if (isDownload) {
@@ -1335,6 +1402,7 @@ btnHtml = `<br><a class="modal-shop-btn" href="${url}" target="_blank" rel="noop
 }
 }
 
+
 bodyContent.innerHTML = `
 ${sliderSection}
 <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
@@ -1343,9 +1411,11 @@ ${sliderSection}
 ${btnHtml}
 `;
 
+
 modal.classList.add('open');
 updateModalSlider();
 }
+
 
 function moveModalSlide(direction) {
 const track = document.getElementById('modalSliderTrack');
@@ -1355,10 +1425,12 @@ currentModalSlide = (currentModalSlide + direction + totalSlides) % totalSlides;
 updateModalSlider();
 }
 
+
 function currentModalSlideIndex(index) {
 currentModalSlide = index;
 updateModalSlider();
 }
+
 
 function updateModalSlider() {
 const track = document.getElementById('modalSliderTrack');
@@ -1372,13 +1444,14 @@ dot.classList.toggle('active', index === currentModalSlide);
 });
 }
 
+
 function openNewsModal(title, date, summary, fullText, imgUrl, linkUrl) {
 const modal = document.getElementById('globalModal');
 const bodyContent = document.getElementById('modalBodyContent');
 const formattedText = fullText.replace(/\n/g, '<br>');
 bodyContent.innerHTML = `
 ${imgUrl ? `<div class="modal-slider-container"><div class="modal-slider-track"><div class="modal-slide"><img src="${imgUrl}" alt="${title}"></div></div></div>` : ''}
-<div class="news-badge" style="display:inline-block; margin-bottom:1rem;">${title}</div>
+<div class="news-badge" style="display:inline-link; margin-bottom:1rem;">${title}</div>
 <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
 <h2>${summary}</h2>
 <p style="margin-bottom: 2rem;">${formattedText}</p>
@@ -1386,10 +1459,12 @@ ${imgUrl ? `<div class="modal-slider-container"><div class="modal-slider-track">
 modal.classList.add('open');
 }
 
+
 function closeModal() {
 const modal = document.getElementById('globalModal');
 modal.classList.remove('open');
 }
+
 
 function toggleFavorite(btn, cardId) {
 btn.classList.toggle('liked');
