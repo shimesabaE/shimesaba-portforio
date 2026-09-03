@@ -41,6 +41,8 @@ animation: fadeIn 0.4s ease forwards;
 @keyframes fadeIn {
 to { opacity: 1; }
 }
+
+/* ヘッダー周り */
 .site-header {
 background-color: var(--water-blue);
 width: 100%;
@@ -111,6 +113,8 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 .top-icon-btn:hover {
 opacity: 0.85;
 }
+
+/* サブナビゲーション（PC用） */
 .sub-nav {
 display: flex;
 justify-content: center;
@@ -119,11 +123,6 @@ gap: 1rem;
 padding: 0.5rem 1.5rem 2rem;
 max-width: 1350px;
 margin: 0 auto;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-}
-.sub-nav::-webkit-scrollbar {
-display: none;
 }
 .sub-nav a {
 color: #ffffff;
@@ -145,6 +144,7 @@ background-color: #ffffff;
 color: var(--water-blue);
 box-shadow: 0 4px 15px rgba(0,0,0,0.06);
 }
+
 .seamless-container {
 background-color: var(--water-blue);
 position: relative;
@@ -168,8 +168,10 @@ position: relative;
 z-index: 10;
 min-height: 80vh;
 }
+
+/* カルーセル */
 .carousel-outer {
-max-width: 1200px;
+max-width: 1000px;
 margin: 0 auto 4rem;
 padding: 0 1.5rem;
 position: relative;
@@ -185,7 +187,7 @@ transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 align-items: center;
 }
 .carousel-card {
-min-width: calc(33.333% - 1.4rem);
+min-width: 100%;
 height: 380px;
 background-color: #fffde6;
 border-radius: 32px;
@@ -201,10 +203,6 @@ cursor: pointer;
 transition: transform 0.3s ease;
 flex-shrink: 0;
 }
-.carousel-card.card-pink { background-color: #ffeef8; }
-.carousel-card.card-yellow { background-color: #fffde6; }
-.carousel-card.card-orange { background-color: #fff3e6; }
-.carousel-card.card-blue { background-color: #eef8ff; }
 .carousel-card img {
 width: 100%;
 height: 100%;
@@ -219,17 +217,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-}
-.carousel-card-inner h3 {
-font-size: 1.8rem;
-font-weight: 900;
-color: var(--text-main);
-margin-bottom: 1rem;
-}
-.carousel-card-inner p {
-font-size: 1rem;
-color: var(--text-muted);
-line-height: 1.6;
 }
 .carousel-arrow {
 position: absolute;
@@ -254,8 +241,8 @@ transition: all 0.2s;
 background-color: var(--water-blue);
 color: #ffffff;
 }
-.carousel-prev { left: 5px; }
-.carousel-next { right: 5px; }
+.carousel-prev { left: -5px; }
+.carousel-next { right: -5px; }
 .carousel-dots {
 display: flex;
 justify-content: center;
@@ -275,6 +262,7 @@ transition: all 0.3s;
 background-color: var(--water-blue);
 transform: scale(1.3);
 }
+
 .page-view {
 display: none;
 animation: fadeInView 0.3s ease forwards;
@@ -286,6 +274,7 @@ display: block;
 from { opacity: 0; transform: translateY(8px); }
 to { opacity: 1; transform: translateY(0); }
 }
+
 .news-section {
 max-width: 1000px;
 margin: 3rem auto 5rem;
@@ -344,6 +333,7 @@ margin-bottom: 0.8rem;
 color: var(--text-muted);
 font-size: 1.05rem;
 }
+
 .filter-container {
 display: flex;
 justify-content: center;
@@ -375,6 +365,7 @@ color: #ffffff;
 border-color: var(--water-blue-dark);
 box-shadow: 0 4px 0 var(--water-blue-dark);
 }
+
 .grid-container {
 max-width: 1200px;
 margin: 0 auto 6rem;
@@ -472,7 +463,9 @@ margin-bottom: 0.5rem;
 font-size: 1.25rem;
 font-weight: 900;
 color: var(--text-main);
+margin-bottom: 0.8rem;
 }
+
 .search-box-wrapper {
 margin-bottom: 1.8rem;
 display: flex;
@@ -529,6 +522,7 @@ margin-bottom: 0.2rem;
 font-size: 0.8rem;
 color: var(--text-muted);
 }
+
 .contact-container {
 max-width: 800px;
 margin: 0 auto 6rem;
@@ -575,6 +569,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 .btn-email { background-color: #ea4335; }
 .btn-twitter { background-color: #000000; }
 .sns-link-btn i { font-size: 1.3rem; }
+
 .modal {
 position: fixed;
 top: 0;
@@ -650,7 +645,27 @@ color: var(--text-muted);
 font-weight: 700;
 font-size: 1.05rem;
 line-height: 1.8;
+margin-bottom: 1.5rem;
 }
+.modal-shop-btn {
+display: inline-flex;
+align-items: center;
+gap: 0.8rem;
+background-color: #ff9ff3;
+color: #ffffff;
+padding: 0.9rem 2rem;
+border-radius: 9999px;
+font-size: 1rem;
+font-weight: 900;
+text-decoration: none;
+box-shadow: 0 6px 0 #e07bb9;
+transition: transform 0.2s;
+margin-top: 1rem;
+}
+.modal-shop-btn:hover {
+transform: translateY(-2px);
+}
+
 footer {
 background-color: var(--water-blue);
 padding: 2.2rem 1.5rem 2.8rem;
@@ -693,7 +708,7 @@ opacity: 0.9;
 }
 
 /* ==========================================
-   スマホ（縦画面）最適化：ボタンが隠れないように調整
+   スマホ（縦画面）最適化用メディアクエリ
    ========================================== */
 @media (max-width: 768px) {
   .site-header {
@@ -717,15 +732,13 @@ opacity: 0.9;
     width: 100% !important;
     justify-content: center !important;
     gap: 3rem !important;
-    margin-top: 0.5px !important;
     margin-left: 0 !important;
   }
   .sub-nav {
-    flex-wrap: wrap; /* ボタンが端からはみ出さないよう折り返し表示に修正 */
+    flex-wrap: wrap;
     justify-content: center;
     padding: 0.5rem 1rem 1.2rem;
     gap: 0.5rem;
-    background-color: transparent;
   }
   .sub-nav a {
     background-color: #ffffff;
@@ -750,7 +763,6 @@ opacity: 0.9;
     margin-bottom: 3rem;
   }
   .carousel-card {
-    min-width: 100%;
     height: 300px;
     border-radius: 24px;
   }
@@ -846,7 +858,6 @@ opacity: 0.9;
 <div class="seamless-container">
 <div class="white-content-section">
 
-<!-- HOME VIEW -->
 <div id="view-home" class="page-view active-view">
 <section class="carousel-outer">
 <div class="carousel-window">
@@ -863,7 +874,7 @@ opacity: 0.9;
 <div class="carousel-card card-blue" onclick="switchView('news')">
 <div class="carousel-card-inner">
 <h3>🌟 スペシャルニュース</h3>
-<p>縦画面でもすべてのメニューが綺麗に収まるデザイン✨</p>
+<p>PCでもスマホでも綺麗に表示されるデザイン✨</p>
 </div>
 </div>
 </div>
@@ -879,7 +890,7 @@ opacity: 0.9;
 </section>
 
 <div class="news-section">
-<a class="news-card" href="https://example.com/renewal-info" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026/03/27', '商品の自主回収に関するお詫びとお知らせ', 'いつもDREAMY PORTFOLIOおよびサンリオ作品をご愛顧いただき誠にありがとうございます。\n\nこの度、一部商品において品質上の問題が判明したため、自主回収を実施させていただくこととなりました。お客様には多大なるご心配とご迷惑をおかけしますことを深くお詫び申し上げます。', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'https://example.com/renewal-info');">
+<a class="news-card" href="#" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026/03/27', '商品の自主回収に関するお詫びとお知らせ', 'いつもDREAMY PORTFOLIOをご愛顧いただき誠にありがとうございます。\n\nこの度、一部商品において品質上の問題が判明したため、自主回収を実施させていただくこととなりました。', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', '');">
 <span class="news-badge">重要なお知らせ</span>
 <span class="news-date">2026/03/27</span>
 <span class="news-msg">商品の自主回収に関するお詫びとお知らせ</span>
@@ -898,12 +909,12 @@ opacity: 0.9;
 </div>
 
 <main class="grid-container" id="grid-home">
-<div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。">
-<div class="card-work">
+<div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。" data-url="">
+<div class="card-work" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。', '')">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1')">
 <i class="fa-solid fa-heart"></i> <span class="fav-count">142</span>
 </button>
-<div class="card-img-wrapper" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。')">
+<div class="card-img-wrapper">
 <span class="card-badge-label">works</span>
 <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Work 1">
 </div>
@@ -911,68 +922,60 @@ opacity: 0.9;
 <div class="card-title">ソーダフロート カップ＆BOX</div>
 </div>
 </div>
-
-<div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="空色シャボン玉アート" data-date="2026 ｜ インディー作品" data-img="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="自由な発想で描いたパーソナルアートワーク。青空とシャボン玉の世界観を表現。">
-<div class="card-work">
+<div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
+<div class="card-work" onclick="openModal('星空トリップ ステッカーセット', '2026 ｜ グッズデザイン', 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80', '夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。', 'https://designshimesaba.booth.pm/')">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2')">
 <i class="fa-solid fa-heart"></i> <span class="fav-count">98</span>
 </button>
-<div class="card-img-wrapper" onclick="openModal('空色くまさんのインディーアート', '2026 ｜ Indie Art', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80', '自由な発想で描いたパーソナルアートワーク。青空とシャボン玉の世界観を表現。')">
+<div class="card-img-wrapper">
 <span class="card-badge-label">indie</span>
-<img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" alt="Indie Art 1">
+<img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Work 2">
 </div>
-<div class="card-date">2026 ｜ インディー作品</div>
-<div class="card-title">空色シャボン玉アート</div>
+<div class="card-date">2026 ｜ グッズデザイン</div>
+<div class="card-title">星空トリップ ステッカーセット</div>
 </div>
 </div>
 </main>
 </div>
 
-<!-- WORKS VIEW -->
 <div id="view-works" class="page-view">
 <div class="section-header">
 <h2>WORKS & CREATIONS</h2>
 <p>これまでに手掛けたグラフィックデザイン、パッケージ、制作物の世界観 🎨✨</p>
 </div>
 <div class="grid-container">
-<div class="grid-item searchable-item" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。">
-<div class="card-work">
-<div class="card-img-wrapper" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなテイクアウトカップ＆パッケージデザイン。')">
-<span class="card-badge-label">works</span>
-<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Work 1">
-</div>
-<div class="card-date">2026 ｜ パッケージデザイン</div>
-<div class="card-title">ソーダフロート カップ＆BOX</div>
-</div>
-</div>
 </div>
 </div>
 
-<!-- GOODS VIEW -->
 <div id="view-goods" class="page-view">
 <div class="section-header">
 <h2>GOODS</h2>
 <p>オリジナルグッズの紹介やBOOTHへのリンクはこちらから 🎁✨</p>
 </div>
 <div class="grid-container">
-<div class="grid-item">
-<div class="card-work" style="text-align: center; padding: 3rem 1.5rem;">
-<h3 style="font-size: 1.5rem; margin-bottom: 1rem;">ショップでグッズをチェック！</h3>
-<p style="color: var(--text-muted); margin-bottom: 1.8rem; font-size: 0.95rem;">BOOTHにて様々な可愛いアイテムを販売中です。</p>
-<a href="https://designshimesaba.booth.pm/" target="_blank" rel="noopener noreferrer" class="filter-btn active" style="display: inline-block; text-decoration: none;">BOOTHショップへ行く 🛒</a>
+<div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
+<div class="card-work" onclick="openModal('星空トリップ ステッカーセット', '2026 ｜ グッズデザイン', 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80', '夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。', 'https://designshimesaba.booth.pm/')">
+<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2')">
+<i class="fa-solid fa-heart"></i> <span class="fav-count">98</span>
+</button>
+<div class="card-img-wrapper">
+<span class="card-badge-label">indie</span>
+<img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Work 2">
+</div>
+<div class="card-date">2026 ｜ グッズデザイン</div>
+<div class="card-title">星空トリップ ステッカーセット</div>
 </div>
 </div>
 </div>
 </div>
 
-<!-- NEWS VIEW -->
 <div id="view-news" class="page-view">
 <div class="section-header">
 <h2>NEWS</h2>
 <p>最新のお知らせやアップデート情報をお届けします 📰✨</p>
 </div>
 <div class="news-section">
-<a class="news-card" href="https://example.com/renewal-info" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026/03/27', '商品の自主回収に関するお詫びとお知らせ', 'いつもDREAMY PORTFOLIOおよびサンリオ作品をご愛顧いただき誠にありがとうございます。\n\nこの度、一部商品において品質上の問題が判明したため、自主回収を実施させていただくこととなりました。お客様には多大なるご心配とご迷惑をおかけしますことを深くお詫び申し上げます。', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'https://example.com/renewal-info');">
+<a class="news-card" href="#" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026/03/27', '商品の自主回収に関するお詫びとお知らせ', 'いつもDREAMY PORTFOLIOをご愛顧いただき誠にありがとうございます。\n\nこの度、一部商品において品質上の問題が判明したため、自主回収を実施させていただくこととなりました。', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', '');">
 <span class="news-badge">重要なお知らせ</span>
 <span class="news-date">2026/03/27</span>
 <span class="news-msg">商品の自主回収に関するお詫びとお知らせ</span>
@@ -980,7 +983,6 @@ opacity: 0.9;
 </div>
 </div>
 
-<!-- CONTACT VIEW -->
 <div id="view-contact" class="page-view">
 <div class="section-header">
 <h2>CONTACT</h2>
@@ -1007,7 +1009,6 @@ opacity: 0.9;
 </div>
 </div>
 
-<!-- モーダル -->
 <div class="modal" id="globalModal" onclick="closeModal()">
 <div class="modal-content" onclick="event.stopPropagation()">
 <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -1072,13 +1073,37 @@ currentSlideIndex = index;
 updateCarousel();
 }
 
+// フィルターボタンの処理
+document.addEventListener('DOMContentLoaded', () => {
+const filterButtons = document.querySelectorAll('.filter-btn');
+filterButtons.forEach(button => {
+button.addEventListener('click', () => {
+// アクティブクラスの切り替え
+filterButtons.forEach(btn => btn.classList.remove('active'));
+button.classList.add('active');
+
+const filterValue = button.getAttribute('data-filter');
+const searchableItems = document.querySelectorAll('.searchable-item');
+
+searchableItems.forEach(item => {
+const category = item.getAttribute('data-category');
+if (filterValue === 'all' || category === filterValue) {
+item.style.display = 'block';
+} else {
+item.style.display = 'none';
+}
+});
+});
+});
+});
+
 function openSearchModal() {
 const modal = document.getElementById('globalModal');
 const bodyContent = document.getElementById('modalBodyContent');
 bodyContent.innerHTML = `
 <h2><i class="fa-solid fa-magnifying-glass"></i> 作品をさがす</h2>
 <div class="search-box-wrapper">
-<input type="text" id="searchInputField" class="search-input" placeholder="キーワードを入力してね（例：ソーダ、空色…）" oninput="filterSearchResults(this.value)">
+<input type="text" id="searchInputField" class="search-input" placeholder="キーワードを入力してね…" oninput="filterSearchResults(this.value)">
 </div>
 <div class="search-results-grid" id="searchResultsGrid"></div>
 `;
@@ -1098,9 +1123,10 @@ const date = item.getAttribute('data-date') || '';
 const img = item.getAttribute('data-img') || '';
 const modalImg = item.getAttribute('data-modalimg') || img;
 const desc = item.getAttribute('data-desc') || '';
-if (title.toLowerCase().includes(keyword.toLowerCase()) || date.toLowerCase().includes(keyword.toLowerCase()) || desc.toLowerCase().includes(keyword.toLowerCase())) {
+const url = item.getAttribute('data-url') || '';
+if (title.toLowerCase().includes(keyword.toLowerCase()) || date.toLowerCase().includes(keyword.toLowerCase())) {
 html += `
-<div class="search-result-card" onclick="openModal('${title}', '${date}', '${modalImg}', '${desc}')">
+<div class="search-result-card" onclick="openModal('${title}', '${date}', '${modalImg}', '${desc}', '${url}')">
 <img src="${img}" alt="${title}">
 <h4>${title}</h4>
 <p>${date}</p>
@@ -1110,7 +1136,7 @@ count++;
 }
 });
 if (count === 0) {
-html = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">みつかりませんでした💧 別のキーワードで試してね！</p>`;
+html = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">みつかりませんでした💧</p>`;
 }
 grid.innerHTML = html;
 }
@@ -1119,7 +1145,7 @@ function filterSearchResults(value) {
 renderSearchResults(value);
 }
 
-function openModal(title, date, imgUrl, desc) {
+function openModal(title, date, imgUrl, desc, url) {
 const modal = document.getElementById('globalModal');
 const bodyContent = document.getElementById('modalBodyContent');
 bodyContent.innerHTML = `
@@ -1127,6 +1153,7 @@ bodyContent.innerHTML = `
 <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
 <h2>${title}</h2>
 <p>${desc}</p>
+${url ? `<a class="modal-shop-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i> ショップで詳細を見る</a>` : ''}
 `;
 modal.classList.add('open');
 }
@@ -1141,7 +1168,6 @@ ${imgUrl ? `<img src="${imgUrl}" alt="${title}">` : ''}
 <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
 <h2>${summary}</h2>
 <p style="margin-bottom: 2rem;">${formattedText}</p>
-${linkUrl ? `<div style="text-align:center;"><a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="filter-btn active" style="display:inline-block; text-decoration:none;">公式サイト詳細を見る ↗</a></div>` : ''}
 `;
 modal.classList.add('open');
 }
