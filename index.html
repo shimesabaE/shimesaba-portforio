@@ -42,7 +42,7 @@ animation: fadeIn 0.4s ease forwards;
 to { opacity: 1; }
 }
 
-/* ヘッダー周り（実機で確認した完璧なスマホレイアウトをベースにPCにも対応） */
+/* ヘッダー周り */
 .site-header {
 background-color: var(--water-blue);
 width: 100%;
@@ -178,7 +178,7 @@ position: relative;
 overflow: hidden;
 width: 100%;
 border-radius: 32px;
-background-color: #ffffff;
+background-color: transparent;
 border: 4px solid #ffffff;
 box-shadow: var(--card-shadow);
 }
@@ -190,8 +190,7 @@ width: 100%;
 .carousel-card {
 min-width: 100%;
 width: 100%;
-height: 380px;
-background-color: #ffffff;
+background-color: transparent;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -199,12 +198,14 @@ align-items: center;
 position: relative;
 cursor: pointer;
 flex-shrink: 0;
+aspect-ratio: 16 / 9;
+overflow: hidden;
 }
 .carousel-card img {
 width: 100%;
 height: 100%;
 object-fit: cover;
-background-color: #ffffff;
+display: block;
 }
 .carousel-card-inner {
 padding: 2.5rem;
@@ -458,20 +459,6 @@ background-color: #ffeef8;
 color: #d63384;
 border-color: #ff9ff3;
 }
-.card-date {
-font-size: 0.85rem;
-font-weight: 700;
-color: var(--text-muted);
-margin-bottom: 0.5rem;
-text-align: center;
-}
-.card-title {
-font-size: 1.25rem;
-font-weight: 900;
-color: var(--text-main);
-margin-bottom: 0.8rem;
-text-align: center;
-}
 
 .search-box-wrapper {
 margin-bottom: 1.8rem;
@@ -581,6 +568,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 .btn-twitter { background-color: #000000; }
 .sns-link-btn i { font-size: 1.3rem; }
 
+/* モーダル・詳細ページ内の複数画像スライダー用スタイル */
 .modal {
 position: fixed;
 top: 0;
@@ -638,15 +626,83 @@ justify-content: center;
 box-shadow: 0 4px 0 #e07bb9;
 z-index: 10;
 }
-.modal-body img {
+
+/* 複数画像スライダーのコンテナ */
+.modal-slider-container {
+position: relative;
 width: 100%;
-aspect-ratio: 16 / 10;
-object-fit: contain;
-background-color: #f8fafc;
 border-radius: 24px;
+overflow: hidden;
 margin-bottom: 1.8rem;
 border: 3px solid var(--border-light);
+background-color: #f8fafc;
 }
+.modal-slider-track {
+display: flex;
+transition: transform 0.4s ease;
+width: 100%;
+}
+.modal-slide {
+min-width: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+}
+.modal-slide img {
+width: 100%;
+height: auto;
+max-height: 55vh;
+object-fit: contain;
+display: block;
+background-color: #f8fafc;
+}
+.modal-arrow {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background-color: #ffffff;
+border: 2px solid var(--water-blue);
+width: 38px;
+height: 38px;
+border-radius: 50%;
+color: var(--water-blue);
+cursor: pointer;
+z-index: 10;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+transition: all 0.2s;
+}
+.modal-arrow:hover {
+background-color: var(--water-blue);
+color: #ffffff;
+}
+.modal-prev { left: 10px; }
+.modal-next { right: 10px; }
+.modal-dots {
+display: flex;
+justify-content: center;
+gap: 0.6rem;
+margin-top: 0.8rem;
+margin-bottom: 1.5rem;
+}
+.modal-dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: #cbd5e1;
+border: none;
+cursor: pointer;
+transition: all 0.3s;
+}
+.modal-dot.active {
+background-color: var(--water-blue);
+transform: scale(1.3);
+}
+
 .modal-body h2 {
 font-size: 1.9rem;
 font-weight: 900;
@@ -722,7 +778,7 @@ font-size: 0.85rem;
 opacity: 0.9;
 }
 
-/* スマホ最適化（実機で確認済みの完璧なバランス） */
+/* スマホ最適化 */
 @media (max-width: 768px) {
   .header-inner {
     padding: 1rem 1rem 0.3rem;
@@ -734,13 +790,16 @@ opacity: 0.9;
   .logo i {
     font-size: 1.1rem;
   }
+  .top-icon-btn span {
+    display: none;
+  }
   .top-icon-btn {
-    font-size: 0.7rem;
+    gap: 0;
   }
   .top-icon-btn i {
-    width: 34px;
-    height: 34px;
-    font-size: 0.9rem;
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
   .sub-nav {
@@ -758,19 +817,19 @@ opacity: 0.9;
     padding-bottom: 4rem;
   }
   .carousel-outer {
-    padding: 0 2.2rem;
+    padding: 0 1rem;
     margin-bottom: 3rem;
   }
   .carousel-window {
     border-radius: 24px;
   }
   .carousel-card {
-    height: 300px;
+    aspect-ratio: 4 / 3;
   }
   .carousel-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 0.85rem;
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
   }
   .grid-container {
     grid-template-columns: 1fr;
@@ -865,16 +924,16 @@ opacity: 0.9;
 <section class="carousel-outer" id="carouselOuter">
 <div class="carousel-window">
 <div class="carousel-track" id="carousel-track">
-<div class="carousel-card card-yellow" onclick="switchView('works')">
+<div class="carousel-card" onclick="switchView('works')">
 <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80" alt="Slide 1">
 </div>
-<div class="carousel-card card-pink" onclick="switchView('works')">
+<div class="carousel-card" onclick="switchView('works')">
 <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80" alt="Slide 2">
 </div>
-<div class="carousel-card card-orange" onclick="switchView('works')">
+<div class="carousel-card" onclick="switchView('works')">
 <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80" alt="Slide 3">
 </div>
-<div class="carousel-card card-blue" onclick="switchView('news')">
+<div class="carousel-card" onclick="switchView('news')">
 <div class="carousel-card-inner">
 <h3>🌟 スペシャルニュース</h3>
 <p>PCでもスマホでも綺麗に表示されるデザイン✨</p>
@@ -912,8 +971,8 @@ opacity: 0.9;
 </div>
 
 <main class="grid-container" id="grid-home">
-<div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。" data-url="">
-<div class="card-work" onclick="openModal('ソーダフロートのパッケージデザイン', '2026 ｜ Package Design', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。', '')">
+<div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ パッケージデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。複数枚の写真をスライドで確認できます！" data-url="">
+<div class="card-work" onclick="openModalFromElement(this)">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1')">
 <i class="fa-solid fa-heart"></i> <span class="fav-count">142</span>
 </button>
@@ -925,8 +984,9 @@ opacity: 0.9;
 <div class="card-title">ソーダフロート カップ＆BOX</div>
 </div>
 </div>
-<div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-modalimg="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
-<div class="card-work" onclick="openModal('星空トリップ ステッカーセット', '2026 ｜ グッズデザイン', 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80', '夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。', 'https://designshimesaba.booth.pm/')">
+
+<div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
+<div class="card-work" onclick="openModalFromElement(this)">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2')">
 <i class="fa-solid fa-heart"></i> <span class="fav-count">98</span>
 </button>
@@ -947,8 +1007,8 @@ opacity: 0.9;
 <p>ご自由にお使いいただけるフリー素材のダウンロードはこちらから 🎨✨</p>
 </div>
 <div class="grid-container">
-<div class="grid-item" data-id="card-1" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ フリー素材" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80">
-<div class="card-work" onclick="openModal('ソーダフロート カップ＆BOX', '2026 ｜ フリー素材', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'スカイブルーの炭酸とホイップクリームをモチーフにしたフリー素材セットです。', 'https://designshimesaba.booth.pm/', true)">
+<div class="grid-item searchable-item" data-category="free" data-id="card-1-w" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ フリー素材" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにしたフリー素材セットです。" data-url="https://designshimesaba.booth.pm/" data-download="true">
+<div class="card-work" onclick="openModalFromElement(this)">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1-works')">
 <i class="fa-solid fa-heart"></i> <span class="fav-count">142</span>
 </button>
@@ -969,8 +1029,8 @@ opacity: 0.9;
 <p>オリジナルグッズの紹介やBOOTHへのリンクはこちらから 🎁✨</p>
 </div>
 <div class="grid-container">
-<div class="grid-item" data-id="card-2" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80">
-<div class="card-work" onclick="openModal('星空トリップ ステッカーセット', '2026 ｜ グッズデザイン', 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80', '夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。', 'https://designshimesaba.booth.pm/', false)">
+<div class="grid-item searchable-item" data-category="goods" data-id="card-2-g" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
+<div class="card-work" onclick="openModalFromElement(this)">
 <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2-goods')">
 <i class="fa-solid fa-heart"></i> <span class="fav-count">98</span>
 </button>
@@ -980,7 +1040,6 @@ opacity: 0.9;
 </div>
 <div class="card-date">2026 ｜ グッズデザイン</div>
 <div class="card-title">星空トリップ ステッカーセット</div>
-<a class="modal-shop-btn" href="https://designshimesaba.booth.pm/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fa-solid fa-bag-shopping"></i> ショップで見る</a>
 </div>
 </div>
 </div>
@@ -1135,7 +1194,7 @@ const searchableItems = document.querySelectorAll('.searchable-item');
 
 searchableItems.forEach(item => {
 const category = item.getAttribute('data-category');
-if (filterValue === 'all' || category === filterValue) {
+if (filterValue === 'all' || category === filterValue || (filterValue === 'works' && category === 'free')) {
 item.style.display = 'block';
 } else {
 item.style.display = 'none';
@@ -1169,12 +1228,21 @@ items.forEach(item => {
 const title = item.getAttribute('data-title') || '';
 const date = item.getAttribute('data-date') || '';
 const img = item.getAttribute('data-img') || '';
-const modalImg = item.getAttribute('data-modalimg') || img;
+const images = item.getAttribute('data-images') || img;
 const desc = item.getAttribute('data-desc') || '';
 const url = item.getAttribute('data-url') || '';
+const isDownload = item.getAttribute('data-download') === 'true';
+
 if (title.toLowerCase().includes(keyword.toLowerCase()) || date.toLowerCase().includes(keyword.toLowerCase())) {
+// 検索カード用のエスケープ処理
+const escapedImages = images.replace(/'/g, "&apos;");
+const escapedTitle = title.replace(/'/g, "&apos;");
+const escapedDate = date.replace(/'/g, "&apos;");
+const escapedDesc = desc.replace(/'/g, "&apos;");
+const escapedUrl = url.replace(/'/g, "&apos;");
+
 html += `
-<div class="search-result-card" onclick="openModal('${title}', '${date}', '${modalImg}', '${desc}', '${url}', false)">
+<div class="search-result-card" onclick="openModal('${escapedTitle}', '${escapedDate}', '${escapedImages}', '${escapedDesc}', '${escapedUrl}', ${isDownload})">
 <img src="${img}" alt="${title}">
 <h4>${title}</h4>
 <p>${date}</p>
@@ -1193,25 +1261,115 @@ function filterSearchResults(value) {
 renderSearchResults(value);
 }
 
-function openModal(title, date, imgUrl, desc, url, isDownload = false) {
+// カードから直接クリックされたときに要素の属性を取得してモーダルを開く
+function openModalFromElement(cardElement) {
+const item = cardElement.closest('.searchable-item');
+if (!item) return;
+const title = item.getAttribute('data-title');
+const date = item.getAttribute('data-date');
+const images = item.getAttribute('data-images') || item.getAttribute('data-img');
+const desc = item.getAttribute('data-desc');
+const url = item.getAttribute('data-url');
+const isDownload = item.getAttribute('data-download') === 'true';
+
+openModal(title, date, images, desc, url, isDownload);
+}
+
+// モーダル内で複数画像をスライド表示する処理
+let currentModalSlide = 0;
+
+function openModal(title, date, imagesStr, desc, url, isDownload = false) {
 const modal = document.getElementById('globalModal');
 const bodyContent = document.getElementById('modalBodyContent');
+currentModalSlide = 0;
+
+// カンマ区切りで複数画像のURLを配列にする
+const images = imagesStr ? imagesStr.split(',').map(s => s.trim()) : [];
+
+let slidesHtml = '';
+let dotsHtml = '';
+
+images.forEach((imgUrl, index) => {
+slidesHtml += `
+<div class="modal-slide">
+<img src="${imgUrl}" alt="${title} - ${index + 1}">
+</div>
+`;
+dotsHtml += `
+<button class="modal-dot ${index === 0 ? 'active' : ''}" onclick="currentModalSlideIndex(${index})"></button>
+`;
+});
+
+let sliderSection = '';
+if (images.length > 1) {
+sliderSection = `
+<div class="modal-slider-container">
+<div class="modal-slider-track" id="modalSliderTrack">
+${slidesHtml}
+</div>
+<button class="modal-arrow modal-prev" onclick="moveModalSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+<button class="modal-arrow modal-next" onclick="moveModalSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+<div class="modal-dots" id="modalDotsContainer">
+${dotsHtml}
+</div>
+`;
+} else if (images.length === 1) {
+sliderSection = `
+<div class="modal-slider-container">
+<div class="modal-slider-track">
+<div class="modal-slide">
+<img src="${images[0]}" alt="${title}">
+</div>
+</div>
+</div>
+`;
+}
+
 let btnHtml = '';
 if (url) {
 if (isDownload) {
-btnHtml = `<a class="modal-dl-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i> ショップでダウンロード</a>`;
+btnHtml = `<br><a class="modal-dl-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i> ショップでダウンロード</a>`;
 } else {
-btnHtml = `<a class="modal-shop-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i> ショップで詳細を見る</a>`;
+btnHtml = `<br><a class="modal-shop-btn" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i> ショップで詳細を見る</a>`;
 }
 }
+
 bodyContent.innerHTML = `
-<img src="${imgUrl}" alt="${title}">
+${sliderSection}
 <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
 <h2>${title}</h2>
 <p>${desc}</p>
 ${btnHtml}
 `;
+
 modal.classList.add('open');
+updateModalSlider();
+}
+
+function moveModalSlide(direction) {
+const track = document.getElementById('modalSliderTrack');
+if (!track) return;
+const totalSlides = track.children.length;
+currentModalSlide = (currentModalSlide + direction + totalSlides) % totalSlides;
+updateModalSlider();
+}
+
+function currentModalSlideIndex(index) {
+currentModalSlide = index;
+updateModalSlider();
+}
+
+function updateModalSlider() {
+const track = document.getElementById('modalSliderTrack');
+if (!track) return;
+const slideWidth = track.querySelector('.modal-slide').clientWidth;
+track.style.transform = `translateX(-${currentModalSlide * slideWidth}px)`;
+
+const dots = document.querySelectorAll('.modal-dot');
+dots.forEach((dot, index) => {
+dot.classList.toggle('active', index === currentModalSlide);
+});
 }
 
 function openNewsModal(title, date, summary, fullText, imgUrl, linkUrl) {
@@ -1219,7 +1377,7 @@ const modal = document.getElementById('globalModal');
 const bodyContent = document.getElementById('modalBodyContent');
 const formattedText = fullText.replace(/\n/g, '<br>');
 bodyContent.innerHTML = `
-${imgUrl ? `<img src="${imgUrl}" alt="${title}">` : ''}
+${imgUrl ? `<div class="modal-slider-container"><div class="modal-slider-track"><div class="modal-slide"><img src="${imgUrl}" alt="${title}"></div></div></div>` : ''}
 <div class="news-badge" style="display:inline-block; margin-bottom:1rem;">${title}</div>
 <div class="card-date" style="margin-bottom:0.6rem;">${date}</div>
 <h2>${summary}</h2>
