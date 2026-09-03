@@ -1181,19 +1181,11 @@ opacity: 0.9;
 
 
 
+<div class="news-section" id="homeNewsContainer"></div>
 
-<div class="news-section">
-<a class="news-card" href="#" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026/09/25', 'ポートフォリオサイト公開のお知らせ', 'いつも〆鯖詠文のデザインをご愛顧いただき誠にありがとうございます。\n\nこの度、新たにサイトを公開いたしました。今後ともよろしくお願いいたします。', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', '');">
-<span class="news-badge">重要なお知らせ</span>
-<span class="news-date">2026/09/25</span>
-<span class="news-msg">ポートフォリオサイト公開のお知らせ</span>
-</a>
-</div>
-
-
-
-
+	
 <div class="section-header">
+	
 <h2>FEATURED CREATIONS</h2>
 <p>心ときめくお仕事実績やクリエイティブな作品を集めました</p>
 </div>
@@ -1301,16 +1293,11 @@ opacity: 0.9;
 <div class="section-header">
 <h2>NEWS</h2>
 <p>最新のお知らせやアップデート情報をお届けします 📰✨</p>
-</div>
 <div class="news-section">
-<a class="news-card" href="#" onclick="event.preventDefault(); openNewsModal('重要なお知らせ', '2026/03/27', '商品の自主回収に関するお詫びとお知らせ', 'いつもDREAMY PORTFOLIOをご愛顧いただき誠にありがとうございます。\n\nこの度、一部商品において品質上の問題が判明したため、自主回収を実施させていただくこととなりました。', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', '');">
-<span class="news-badge">重要なお知らせ</span>
-<span class="news-date">2026/03/27</span>
-<span class="news-msg">商品の自主回収に関するお詫びとお知らせ</span>
-</a>
-</div>
+  <a class="news-card" href="#" onclick="...">...</a>
 </div>
 
+<div class="news-section" id="homeNewsContainer"></div>
 
 
 
@@ -1839,6 +1826,64 @@ count -= 1;
 }
 countSpan.textContent = count;
 }
+	
+	// ==========================================
+// お知らせデータの管理と自動同期
+// ==========================================
+const newsDataList = [
+  {
+    badge: "重要なお知らせ",
+    date: "2026/03/27",
+    msg: "商品の自主回収に関するお詫びとお知らせ",
+    fullText: "いつもDREAMY PORTFOLIOをご愛顧いただき誠にありがとうございます。\n\nこの度、一部商品において品質上の問題が判明したため、自主回収を実施させていただくこととなりました。",
+    img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80"
+  },
+  // 新しいお知らせを追加したいときは、ここにコピペして増やせます！
+  /*
+  {
+    badge: "アップデート",
+    date: "2026/04/01",
+    msg: "新しいフリー素材を追加しました！",
+    fullText: "フリー素材のページに新しいアイテムを追加しました。ぜひご自由にお使いください。",
+    img: ""
+  }
+  */
+];
+
+function renderNews() {
+  const homeContainer = document.getElementById('homeNewsContainer');
+  const tabContainer = document.getElementById('tabNewsContainer');
+  
+  if (!homeContainer && !tabContainer) return;
+
+  let html = '';
+  // リストにあるお知らせをすべてカードに変換
+  newsDataList.forEach(news => {
+    // 複数行のテキストや引用符のエスケープ処理
+    const escapedBadge = news.badge.replace(/'/g, "&apos;");
+    const escapedDate = news.date.replace(/'/g, "&apos;");
+    const escapedSummary = news.msg.replace(/'/g, "&apos;");
+    const escapedText = news.fullText.replace(/\n/g, '\\n').replace(/'/g, "&apos;");
+    
+    html += `
+      <a class="news-card" href="#" onclick="event.preventDefault(); openNewsModal('${escapedBadge}', '${escapedDate}', '${escapedSummary}', '${escapedText}', '${news.img}', '');">
+        <span class="news-badge">${news.badge}</span>
+        <span class="news-date">${news.date}</span>
+        <span class="news-msg">${news.msg}</span>
+      </a>
+    `;
+  });
+
+  // ホームとニュースタブの両方に同じHTMLを流し込む
+  if (homeContainer) homeContainer.innerHTML = html;
+  if (tabContainer) tabContainer.innerHTML = html;
+}
+
+// ページが読み込まれたときにニュースを自動生成
+document.addEventListener('DOMContentLoaded', () => {
+  renderNews();
+});
+	
 </script>
 </body>
 </html>
