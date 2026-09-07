@@ -1070,7 +1070,7 @@ opacity: 0.9;
 </div>
 <nav class="sub-nav">
 <a id="nav-home" class="active" onclick="switchView('home')"><i class="fa-solid fa-house"></i> ホーム</a>
-<a id="nav-works" onclick="switchView('works')"><i class="fa-solid fa-star"></i> フリー素材</a>
+<a id="nav-free" onclick="switchView('free')"><i class="fa-solid fa-star"></i> フリー素材</a>
 <a id="nav-goods" onclick="switchView('goods')"><i class="fa-solid fa-gift"></i> グッズ</a>
 <a id="nav-news" onclick="switchView('news')"><i class="fa-solid fa-newspaper"></i> ニュース</a>
 <a id="nav-contact" onclick="switchView('contact')"><i class="fa-solid fa-envelope"></i> お問い合わせ</a>
@@ -1088,10 +1088,10 @@ opacity: 0.9;
 <div class="carousel-card" onclick="switchView('contact')">
 <img src="https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/%E3%83%8F%E3%82%99%E3%83%8A%E3%83%BC%E7%94%A8.png?raw=true" alt="Slide 1">
 </div>
-<div class="carousel-card" onclick="switchView('works')">
+<div class="carousel-card" onclick="switchView('free')">
 <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80" alt="Slide 2">
 </div>
-<div class="carousel-card" onclick="switchView('works')">
+<div class="carousel-card" onclick="switchView('free')">
 <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80" alt="Slide 3">
 </div>
 <div class="carousel-card" onclick="switchView('news')">
@@ -1123,80 +1123,33 @@ opacity: 0.9;
 <button class="filter-btn active" data-filter="all">All</button>
 <button class="filter-btn" data-filter="works">Works</button>
 <button class="filter-btn" data-filter="indie">Indie</button>
+<button class="filter-btn" data-filter="free">Free</button>
 </div>
 
 <main class="grid-container" id="grid-home">
-<div class="grid-item searchable-item" data-category="works" data-id="card-1" data-title="そうさくマーケットお品書きデザイン" data-date="2026.07 ｜ お品書きデザイン" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。複数枚の写真をスライドで確認できます！" data-url="">
-<div class="card-work" onclick="openModalFromElement(this)">
-<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1')">
-<i class="fa-solid fa-heart"></i> <span class="fav-count">0</span>
-</button>
-<div class="card-img-wrapper">
-<span class="card-badge-label">works</span>
-<img src="https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/2026_07_1.jpg?raw=true" alt="Work 1">
-</div>
-<div class="card-date">2026.07 ｜ お品書きデザイン</div>
-<div class="card-title">そうさくマーケットお品書きデザイン</div>
-</div>
-</div>
-
-<div class="grid-item searchable-item" data-category="indie" data-id="card-2" data-title="ガチャガチャ制作" data-date="2026.07 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
-<div class="card-work" onclick="openModalFromElement(this)">
-<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2')">
-<i class="fa-solid fa-heart"></i> <span class="fav-count">0</span>
-</button>
-<div class="card-img-wrapper">
-<span class="card-badge-label">indie</span>
-<img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Work 2">
-</div>
-<div class="card-date">2026.07 ｜ グッズデザイン</div>
-<div class="card-title">ガチャガチャ制作</div>
-</div>
-</div>
+  <!-- ホーム画面のアイテムはJSで動的生成されます -->
 </main>
 </div>
 
-<div id="view-works" class="page-view">
+<!-- フリー素材タブ -->
+<div id="view-free" class="page-view">
 <div class="section-header">
 <h2>FREE MATERIALS</h2>
 <p>ご自由にお使いいただけるフリー素材のダウンロードはこちらから </p>
 </div>
-<div class="grid-container">
-<div class="grid-item searchable-item" data-category="free" data-id="card-1-works" data-title="ソーダフロート カップ＆BOX" data-date="2026 ｜ フリー素材" data-img="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" data-desc="スカイブルーの炭酸とホイップクリームをモチーフにしたフリー素材セットです。" data-url="https://designshimesaba.booth.pm/" data-download="true">
-<div class="card-work" onclick="openModalFromElement(this)">
-<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-1-works')">
-<i class="fa-solid fa-heart"></i> <span class="fav-count">142</span>
-</button>
-<div class="card-img-wrapper">
-<span class="card-badge-label">free</span>
-<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Work 1">
-</div>
-<div class="card-date">2026 ｜ フリー素材</div>
-<div class="card-title">ソーダフロート カップ＆BOX</div>
-</div>
-</div>
+<div class="grid-container" id="grid-free">
+  <!-- フリー素材タブのアイテムが自動連動して表示されます -->
 </div>
 </div>
 
+<!-- グッズタブ -->
 <div id="view-goods" class="page-view">
 <div class="section-header">
 <h2>GOODS</h2>
 <p>オリジナルグッズの紹介やBOOTHへのリンクはこちらから </p>
 </div>
-<div class="grid-container">
-<div class="grid-item searchable-item" data-category="goods" data-id="card-2-goods" data-title="星空トリップ ステッカーセット" data-date="2026 ｜ グッズデザイン" data-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" data-images="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" data-desc="夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。" data-url="https://designshimesaba.booth.pm/">
-<div class="card-work" onclick="openModalFromElement(this)">
-<button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this, 'card-2-goods')">
-<i class="fa-solid fa-heart"></i> <span class="fav-count">98</span>
-</button>
-<div class="card-img-wrapper">
-<span class="card-badge-label">indie</span>
-<img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Work 2">
-</div>
-<div class="card-date">2026 ｜ グッズデザイン</div>
-<div class="card-title">星空トリップ ステッカーセット</div>
-</div>
-</div>
+<div class="grid-container" id="grid-goods">
+  <!-- グッズタブのアイテムが自動連動して表示されます -->
 </div>
 </div>
 
@@ -1250,7 +1203,7 @@ opacity: 0.9;
 <div class="footer-logo" onclick="switchView('home')">SHIMESABA PORTFOLIO</div>
 <div class="footer-nav">
 <a onclick="switchView('home')">ホーム</a>
-<a onclick="switchView('works')">フリー素材</a>
+<a onclick="switchView('free')">フリー素材</a>
 <a onclick="switchView('goods')">グッズ</a>
 <a onclick="switchView('news')">ニュース</a>
 <a onclick="switchView('contact')">お問い合わせ</a>
@@ -1259,6 +1212,156 @@ opacity: 0.9;
 </footer>
 
 <script>
+// ==========================================
+// 作品データの一元管理（ここでデータを追加・編集できます）
+// ==========================================
+const worksDataList = [
+  {
+    id: "card-1",
+    category: "indie",
+    isFree: false,
+    isGoods: false,
+    showOnHome: true,
+    title: "そうさくマーケットお品書きデザイン",
+    date: "2026.07 ｜ お品書きデザイン",
+    badge: "indie",
+    img: "https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/2026_07_1.jpg?raw=true",
+    images: "https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/2026_07_1.jpg?raw=true,https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80",
+    desc: "スカイブルーの炭酸とホイップクリームをモチーフにした、爽やかでキュートなパッケージデザイン。複数枚の写真をスライドで確認できます！",
+    url: "",
+    isDownload: false,
+    defaultFav: 0
+  },
+  {
+    id: "card-2",
+    category: "indie",
+    isFree: false,
+    isGoods: false,
+    showOnHome: true,
+    title: "ガチャガチャ制作",
+    date: "2026.07 ｜ グッズデザイン",
+    badge: "indie",
+    img: "https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/2026_07%E5%88%B6%E4%BD%9C%E5%AE%9F%E7%B8%BE_%E3%82%AB%E3%82%99%E3%83%81%E3%83%A3.jpg?raw=true",
+    images: "https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/2026_07%E5%88%B6%E4%BD%9C%E5%AE%9F%E7%B8%BE_%E3%82%AB%E3%82%99%E3%83%81%E3%83%A3.jpg?raw=true,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80",
+    desc: "夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。",
+    url: "https://designshimesaba.booth.pm/",
+    isDownload: false,
+    defaultFav: 0
+  },
+  {
+    id: "card-3",
+    category: "works",
+    isFree: false,
+    isGoods: false,
+    showOnHome: true,
+    title: "ビビッター配信サムネイル制作",
+    date: "2026.07 サムネイルデザイン",
+    badge: "works",
+    img: "https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/2024_0530%E5%88%B6%E4%BD%9C%E5%AE%9F%E7%B8%BE.jpg?raw=true",
+    images: "https://github.com/shimesabaE/shimesaba-portforio/blob/main/%E4%BD%BF%E7%94%A8%E7%94%BB%E5%83%8F/2024_0530%E5%88%B6%E4%BD%9C%E5%AE%9F%E7%B8%BE.jpg?raw=true",
+    desc: "夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。",
+    url: "https://designshimesaba.booth.pm/",
+    isDownload: false,
+    defaultFav: 0
+  },
+  {
+    id: "card-2-goods",
+    category: "indie",   
+    isFree: false,
+    isGoods: true,      
+    showOnHome: true,   
+    title: "星空トリップ ステッカーセット",
+    date: "2026 ｜ グッズデザイン",
+    badge: "indie",
+    img: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80",
+    images: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80",
+    desc: "夜空と星をテーマにしたキラキラ輝くホログラム仕様のオリジナルステッカーセット。",
+    url: "https://designshimesaba.booth.pm/",
+    isDownload: false,
+    defaultFav: 0
+  },
+  {
+    id: "card-new-sample",
+    category: "free",
+    isFree: true,
+    isGoods: false,
+    showOnHome: true,
+    title: "パステル雲の背景素材セット",
+    date: "2026 ｜ フリー素材",
+    badge: "free",
+    img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    images: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80",
+    desc: "ヘッダーや背景に使える、ふんわりとしたパステルカラーの空と雲の素材セットです。",
+    url: "https://designshimesaba.booth.pm/",
+    isDownload: true,
+    defaultFav: 0
+  }
+];
+
+// カードHTMLを生成する共通関数
+function createCardHtml(item) {
+  let likedClass = "";
+  let favCount = item.defaultFav;
+  const savedData = localStorage.getItem('favorite_' + item.id);
+  if (savedData) {
+    try {
+      const data = JSON.parse(savedData);
+      if (data.liked) likedClass = "liked";
+      if (typeof data.count === 'number') favCount = data.count;
+    } catch (e) {}
+  }
+
+  const escapedImages = item.images.replace(/'/g, "&apos;");
+  const escapedTitle = item.title.replace(/'/g, "&apos;");
+  const escapedDate = item.date.replace(/'/g, "&apos;");
+  const escapedDesc = item.desc.replace(/'/g, "&apos;");
+  const escapedUrl = item.url.replace(/'/g, "&apos;");
+
+  return `
+    <div class="grid-item searchable-item" data-category="${item.category}" data-id="${item.id}" data-title="${escapedTitle}" data-date="${escapedDate}" data-img="${item.img}" data-images="${escapedImages}" data-desc="${escapedDesc}" data-url="${escapedUrl}" data-download="${item.isDownload}">
+      <div class="card-work" onclick="openModalFromElement(this)">
+        <button class="favorite-btn ${likedClass}" onclick="event.stopPropagation(); toggleFavorite(this, '${item.id}')">
+          <i class="fa-solid fa-heart"></i> <span class="fav-count">${favCount}</span>
+        </button>
+        <div class="card-img-wrapper">
+          <span class="card-badge-label">${item.badge}</span>
+          <img src="${item.img}" alt="${item.title}">
+        </div>
+        <div class="card-date">${item.date}</div>
+        <div class="card-title">${item.title}</div>
+      </div>
+    </div>
+  `;
+}
+
+// 各グリッドへデータを流し込んで描画
+function renderAllGrids() {
+  const homeGrid = document.getElementById('grid-home');
+  const freeGrid = document.getElementById('grid-free');
+  const goodsGrid = document.getElementById('grid-goods');
+
+  let homeHtml = "";
+  let freeHtml = "";
+  let goodsHtml = "";
+
+  worksDataList.forEach(item => {
+    const cardHtml = createCardHtml(item);
+    if (item.showOnHome) {
+      homeHtml += cardHtml;
+    }
+    if (item.isFree) {
+      freeHtml += cardHtml;
+    }
+    if (item.isGoods) {
+      goodsHtml += cardHtml;
+    }
+  });
+
+  if (homeGrid) homeGrid.innerHTML = homeHtml;
+  if (freeGrid) freeGrid.innerHTML = freeHtml;
+  if (goodsGrid) goodsGrid.innerHTML = goodsHtml;
+}
+
 function switchView(viewName) {
 document.querySelectorAll('.page-view').forEach(view => {
 view.classList.remove('active-view');
@@ -1337,30 +1440,30 @@ startAutoPlay();
 startAutoPlay();
 
 document.addEventListener('DOMContentLoaded', () => {
-const filterButtons = document.querySelectorAll('.filter-btn');
-filterButtons.forEach(button => {
-button.addEventListener('click', () => {
-filterButtons.forEach(btn => btn.classList.remove('active'));
-button.classList.add('active');
+  renderAllGrids();
+  renderNews();
 
-const filterValue = button.getAttribute('data-filter');
-const searchableItems = document.querySelectorAll('.searchable-item');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
 
-searchableItems.forEach(item => {
-const category = item.getAttribute('data-category');
-if (filterValue === 'all' || category === filterValue || (filterValue === 'works' && category === 'free')) {
-item.style.display = 'block';
-} else {
-item.style.display = 'none';
-}
-});
-});
-});
+      const filterValue = button.getAttribute('data-filter');
+      const searchableItems = document.querySelectorAll('#grid-home .searchable-item');
+
+      searchableItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        if (filterValue === 'all' || category === filterValue) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
 });
 
-// ==========================================
-// マウスに追従して滑らかに動き続けるイージング・アニメーション
-// ==========================================
 let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 const decorItems = document.querySelectorAll('.decor-item');
 let currentPos = Array.from(decorItems).map(() => ({ x: 0, y: 0 }));
@@ -1393,9 +1496,6 @@ function animateDecor() {
 }
 requestAnimationFrame(animateDecor);
 
-// ==========================================
-// ページトップに戻るボタンの制御
-// ==========================================
 const toTopBtn = document.getElementById('toTopBtn');
 
 window.addEventListener('scroll', () => {
@@ -1433,6 +1533,8 @@ if (!grid) return;
 const items = document.querySelectorAll('.searchable-item');
 let html = '';
 let count = 0;
+const seenIds = new Set();
+
 items.forEach(item => {
 const title = item.getAttribute('data-title') || '';
 const date = item.getAttribute('data-date') || '';
@@ -1441,8 +1543,12 @@ const images = item.getAttribute('data-images') || img;
 const desc = item.getAttribute('data-desc') || '';
 const url = item.getAttribute('data-url') || '';
 const isDownload = item.getAttribute('data-download') === 'true';
+const id = item.getAttribute('data-id');
+
+if (seenIds.has(id)) return;
 
 if (title.toLowerCase().includes(keyword.toLowerCase()) || date.toLowerCase().includes(keyword.toLowerCase())) {
+seenIds.add(id);
 const escapedImages = images.replace(/'/g, "&apos;");
 const escapedTitle = title.replace(/'/g, "&apos;");
 const escapedDate = date.replace(/'/g, "&apos;");
@@ -1572,6 +1678,7 @@ const slideWidth = track.querySelector('.modal-slide').clientWidth;
 track.style.transform = `translateX(-${currentModalSlide * slideWidth}px)`;
 
 const dots = document.querySelectorAll('.modal-dot');
+dots.gov?.();
 dots.forEach((dot, index) => {
 dot.classList.toggle('active', index === currentModalSlide);
 });
@@ -1596,9 +1703,6 @@ const modal = document.getElementById('globalModal');
 modal.classList.remove('open');
 }
 
-// ==========================================
-// お気に入り（いいね）機能とlocalStorage保存
-// ==========================================
 function toggleFavorite(btn, cardId) {
     btn.classList.toggle('liked');
     const countSpan = btn.querySelector('.fav-count');
@@ -1611,7 +1715,6 @@ function toggleFavorite(btn, cardId) {
     }
     countSpan.textContent = count;
 
-    // ブラウザの localStorage に状態とカウント数を保存
     const isLiked = btn.classList.contains('liked');
     const favoriteData = {
         liked: isLiked,
@@ -1620,9 +1723,6 @@ function toggleFavorite(btn, cardId) {
     localStorage.setItem('favorite_' + cardId, JSON.stringify(favoriteData));
 }
 
-// ==========================================
-// お知らせデータの管理と自動同期
-// ==========================================
 const newsDataList = [
   {
     badge: "重要なお知らせ",
@@ -1656,42 +1756,8 @@ function renderNews() {
   });
 
   if (homeContainer) homeContainer.innerHTML = html;
-  if (tabContainer) tabContainer.innerHTML = html; /* 修正箇所 */
+  if (tabContainer) tabContainer.innerHTML = html;
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderNews();
-
-  // ページ読み込み時に保存されていたお気に入り情報を復元
-  const favoriteButtons = document.querySelectorAll('.favorite-btn');
-  favoriteButtons.forEach(btn => {
-    const onclickAttr = btn.getAttribute('onclick');
-    const match = onclickAttr && onclickAttr.match(/['"]([^'"]+)['"]\s*\)/);
-    
-    if (match) {
-      const cardId = match[1];
-      const savedData = localStorage.getItem('favorite_' + cardId);
-      
-      if (savedData) {
-        try {
-          const data = JSON.parse(savedData);
-          const countSpan = btn.querySelector('.fav-count');
-          
-          if (data.liked) {
-            btn.classList.add('liked');
-          } else {
-            btn.classList.remove('liked');
-          }
-          if (countSpan && typeof data.count === 'number') {
-            countSpan.textContent = data.count;
-          }
-        } catch (e) {
-          console.error('Failed to parse favorite data', e);
-        }
-      }
-    }
-  });
-});
 </script>
 </body>
 </html>
